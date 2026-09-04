@@ -38,20 +38,20 @@
 
   const cases={
     urgent:{
-      time:'22:47:03',type:'Technischer Bereitschaftsdienst',status:'SOFORT',wait:false,
+      time:'22:47',wait:false,
       quote:'„Die Kühlung ist ausgefallen. Der Betrieb startet um sechs.“',
-      fields:'Standort · Rückruf · Anlage · Auswirkung',
-      rule:'Kritische Anlage + Ausfall vor Betriebsstart',total:'02:02',
+      fields:'Standort, Rückrufnummer, betroffene Anlage und Auswirkung.',
+      rule:'Kritische Anlage plus Ausfall vor Betriebsstart: sofort weitergeben.',total:'02:02',
       decision:'Bereitschaft jetzt informieren.',
-      copy:'Mit Situation, Rückrufnummer und allen vier Pflichtangaben.',handoff:'22:49:05'
+      copy:'Mit Situation, Rückrufnummer und allen vereinbarten Angaben.',handoff:'22:49 übergeben'
     },
     wait:{
-      time:'18:12:14',type:'Terminänderung',status:'MORGEN',wait:true,
+      time:'18:12',wait:true,
       quote:'„Ich möchte den Termin morgen verschieben und brauche einen Rückruf.“',
-      fields:'Name · Rückruf · Auftragsbezug · Rückrufzeit',
-      rule:'Kein akuter Handlungsbedarf',total:'01:32',
+      fields:'Name, Rückrufnummer, Auftragsbezug und gewünschte Rückrufzeit.',
+      rule:'Kein akuter Handlungsbedarf: für den nächsten Arbeitstag vormerken.',total:'01:32',
       decision:'Für morgen 08:00 vormerken.',
-      copy:'Mit Rückrufwunsch, Kontaktdaten und Auftragsbezug.',handoff:'18:13:46'
+      copy:'Mit Rückrufwunsch, Kontaktdaten und Auftragsbezug.',handoff:'18:13 vorgemerkt'
     }
   };
 
@@ -66,9 +66,6 @@
       item.tabIndex=active?0:-1;
     });
     $('[data-case-time]').textContent=data.time;
-    $('[data-case-type]').textContent=data.type;
-    $('[data-case-status]').textContent=data.status;
-    $('[data-case-status]').classList.toggle('wait',data.wait);
     $('[data-case-quote]').textContent=data.quote;
     $('[data-case-fields-inline]').textContent=data.fields;
     $('[data-case-rule]').textContent=data.rule;
