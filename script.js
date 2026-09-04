@@ -1,11 +1,129 @@
 (()=>{
-const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
-const header=$('[data-header]'),bar=$('.progress i');
-function onScroll(){const y=scrollY,d=document.documentElement.scrollHeight-innerHeight;header.classList.toggle('scrolled',y>10);bar.style.transform=`scaleX(${d>0?y/d:0})`}onScroll();addEventListener('scroll',onScroll,{passive:true});
-const menu=$('.menu'),nav=$('.nav');function closeMenu(){menu.setAttribute('aria-expanded','false');nav.classList.remove('open')}menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open)});$$('.nav a').forEach(a=>a.addEventListener('click',closeMenu));addEventListener('resize',()=>{if(innerWidth>900)closeMenu()});
-const reveal=$$('[data-reveal]');if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver'in window))reveal.forEach(x=>x.classList.add('show'));else{const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -4%'});reveal.forEach(x=>io.observe(x))}
-const calls={urgent:{meta:'Eingehender Anruf · technischer Notdienst',title:'„Unsere Kühlung ist ausgefallen. Der Betrieb startet um sechs.“',urgency:'sofort',wait:false,caller:'Produktionsstandort, Kühlung seit 20 Minuten ausgefallen, Ware möglicherweise gefährdet.',bot:'Erfasst Standort, Rückrufnummer, betroffene Anlage, Auswirkung und Zugang.',decision:'Bereitschaft jetzt informieren',copy:'Mit Grund, Kontaktdaten und strukturierter Zusammenfassung.',tag:'eskalieren'},wait:{meta:'Eingehender Anruf · Terminorganisation',title:'„Ich möchte den Termin morgen verschieben.“',urgency:'später',wait:true,caller:'Bestandskunde, Auftrag bekannt, Rückruf am nächsten Vormittag gewünscht.',bot:'Erfasst Name, Rückrufnummer, Auftragsbezug und gewünschtes Zeitfenster.',decision:'Für das Büro vormerken',copy:'Vollständige Übergabe für den nächsten Arbeitstag.',tag:'nicht stören'}};
-$$('[data-call]').forEach(tab=>tab.addEventListener('click',()=>{const d=calls[tab.dataset.call];$$('[data-call]').forEach(t=>{const active=t===tab;t.classList.toggle('active',active);t.setAttribute('aria-selected',String(active))});$('[data-call-meta]').textContent=d.meta;$('[data-call-title]').textContent=d.title;$('[data-urgency]').textContent=d.urgency;$('[data-urgency]').classList.toggle('wait',d.wait);$('[data-caller]').textContent=d.caller;$('[data-bot]').textContent=d.bot;$('[data-decision-title]').textContent=d.decision;$('[data-decision-copy]').textContent=d.copy;$('[data-decision-tag]').textContent=d.tag;const box=$('[data-decision]');box.classList.toggle('urgent',!d.wait);box.classList.toggle('wait',d.wait)}));
-$$('details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)$$('details[open]').forEach(o=>{if(o!==d)o.open=false})}));
-const form=$('#form'),success=$('.success'),error=$('.error');form.addEventListener('submit',e=>{e.preventDefault();let ok=true;$$('[required]',form).forEach(f=>{const valid=f.checkValidity()&&f.value.trim();f.classList.toggle('invalid',!valid);if(!valid)ok=false});if(!ok){error.textContent='Bitte füllen Sie alle Pflichtfelder vollständig aus.';$('.invalid',form)?.focus();return}error.textContent='';form.hidden=true;success.hidden=false});$$('input,select,textarea',form).forEach(f=>['input','change'].forEach(ev=>f.addEventListener(ev,()=>f.classList.remove('invalid'))));$('.reset').addEventListener('click',()=>{form.reset();form.hidden=false;success.hidden=true;$('input',form).focus()});$('[data-year]').textContent=new Date().getFullYear();
+  const $=(selector,root=document)=>root.querySelector(selector);
+  const $$=(selector,root=document)=>[...root.querySelectorAll(selector)];
+
+  const header=$('[data-header]');
+  const progress=$('.progress i');
+  const updateScroll=()=>{
+    const y=window.scrollY;
+    const distance=document.documentElement.scrollHeight-window.innerHeight;
+    header?.classList.toggle('scrolled',y>10);
+    if(progress) progress.style.transform=`scaleX(${distance>0?Math.min(y/distance,1):0})`;
+  };
+  updateScroll();
+  addEventListener('scroll',updateScroll,{passive:true});
+
+  const menu=$('.menu');
+  const nav=$('.nav');
+  const closeMenu=()=>{
+    menu?.setAttribute('aria-expanded','false');
+    nav?.classList.remove('open');
+    document.body.classList.remove('menuOpen');
+  };
+  menu?.addEventListener('click',()=>{
+    const open=menu.getAttribute('aria-expanded')!=='true';
+    menu.setAttribute('aria-expanded',String(open));
+    nav?.classList.toggle('open',open);
+    document.body.classList.toggle('menuOpen',open);
+  });
+  $$('.nav a').forEach(link=>link.addEventListener('click',closeMenu));
+  addEventListener('resize',()=>{if(innerWidth>900) closeMenu()});
+  addEventListener('keydown',event=>{if(event.key==='Escape') closeMenu()});
+
+  const reveal=$$('[data-reveal]');
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){
+    reveal.forEach(item=>item.classList.add('show'));
+  }else{
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:.08,rootMargin:'0px 0px -4%'});
+    reveal.forEach(item=>observer.observe(item));
+  }
+
+  const calls={
+    urgent:{
+      meta:'Technischer Notdienst',
+      title:'„Unsere Kühlung ist ausgefallen. Der Betrieb startet um sechs.“',
+      urgency:'sofort',
+      wait:false,
+      capture:['Standort','Rückrufnummer','betroffene Anlage','Auswirkung & Zugang'],
+      decision:'Bereitschaft jetzt informieren',
+      copy:'Mit Grund, Kontaktdaten und strukturierter Zusammenfassung.',
+      tag:'eskalieren'
+    },
+    wait:{
+      meta:'Terminorganisation',
+      title:'„Ich möchte den Termin morgen verschieben.“',
+      urgency:'später',
+      wait:true,
+      capture:['Name','Rückrufnummer','Auftragsbezug','gewünschte Rückrufzeit'],
+      decision:'Für das Büro vormerken',
+      copy:'Vollständige Übergabe für den nächsten Arbeitstag.',
+      tag:'nicht stören'
+    }
+  };
+
+  $$('[data-call]').forEach(tab=>tab.addEventListener('click',()=>{
+    const data=calls[tab.dataset.call];
+    if(!data) return;
+    $$('[data-call]').forEach(item=>{
+      const active=item===tab;
+      item.classList.toggle('active',active);
+      item.setAttribute('aria-selected',String(active));
+    });
+    $('[data-call-meta]').textContent=data.meta;
+    $('[data-call-title]').textContent=data.title;
+    const urgency=$('[data-urgency]');
+    urgency.textContent=data.urgency;
+    urgency.classList.toggle('wait',data.wait);
+    $('[data-capture]').innerHTML=data.capture.map(item=>`<li>${item}</li>`).join('');
+    $('[data-decision-title]').textContent=data.decision;
+    $('[data-decision-copy]').textContent=data.copy;
+    $('[data-decision-tag]').textContent=data.tag;
+    const decision=$('[data-decision]');
+    decision.classList.toggle('urgent',!data.wait);
+    decision.classList.toggle('wait',data.wait);
+  }));
+
+  $$('details').forEach(detail=>detail.addEventListener('toggle',()=>{
+    if(detail.open) $$('details[open]').forEach(other=>{if(other!==detail) other.open=false});
+  }));
+
+  const form=$('#form');
+  const success=$('.success');
+  const error=$('.error');
+  form?.addEventListener('submit',event=>{
+    event.preventDefault();
+    let valid=true;
+    $$('[required]',form).forEach(field=>{
+      const fieldValid=field.checkValidity()&&String(field.value).trim().length>0;
+      field.classList.toggle('invalid',!fieldValid);
+      field.setAttribute('aria-invalid',String(!fieldValid));
+      if(!fieldValid) valid=false;
+    });
+    if(!valid){
+      error.textContent='Bitte füllen Sie alle Pflichtfelder vollständig aus.';
+      $('.invalid',form)?.focus();
+      return;
+    }
+    error.textContent='';
+    form.hidden=true;
+    success.hidden=false;
+  });
+  $$('input,select,textarea',form).forEach(field=>{
+    ['input','change'].forEach(eventName=>field.addEventListener(eventName,()=>{field.classList.remove('invalid');field.removeAttribute('aria-invalid')}));
+  });
+  $('.reset')?.addEventListener('click',()=>{
+    form.reset();
+    form.hidden=false;
+    success.hidden=true;
+    $('input',form)?.focus();
+  });
+  const year=$('[data-year]');
+  if(year) year.textContent=new Date().getFullYear();
 })();
