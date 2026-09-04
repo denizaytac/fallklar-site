@@ -7,9 +7,11 @@
 <meta name="description" content="Fallklar ist die KI-Telefonassistenz für unbeantwortete Anrufe: Sie klärt Anliegen, erfasst Angaben und informiert Ihr Team nur, wenn es nötig ist.">
 <title>Fallklar — KI-Telefonassistenz für unbeantwortete Anrufe</title>
 <link rel="icon" href="data:,">
+<link rel="preload" href="assets/fallklar-glass-handset.webp" as="image" type="image/webp">
 <link rel="stylesheet" href="styles-base.css">
 <link rel="stylesheet" href="styles-sections.css">
 <link rel="stylesheet" href="styles-responsive.css">
+<link rel="stylesheet" href="styles-art.css">
 </head>
 <body>
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -29,6 +31,7 @@
 
 <main id="main">
 <section class="hero" id="top">
+  <canvas class="signalCanvas" data-signal-canvas aria-hidden="true"></canvas>
   <div class="heroSignal" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   <div class="shell heroGrid">
     <div class="heroCopy" data-reveal>
@@ -47,6 +50,13 @@
         </div>
       </div>
     </div>
+
+    <figure class="heroSculpture" data-sculpture aria-hidden="true">
+      <div class="heroSculptureAura"></div>
+      <div class="heroSculptureInner">
+        <img src="assets/fallklar-glass-handset.webp" alt="" width="900" height="1125" fetchpriority="high" decoding="async">
+      </div>
+    </figure>
 
     <div class="callBoard" data-reveal data-delay="1" aria-label="Beispiel für einen von Fallklar geklärten Anruf">
       <div class="boardTop">
@@ -133,6 +143,9 @@
       </div>
       <div class="routingBoard" data-reveal data-delay="1">
         <div class="routingTop"><span>ANRUF AUF IHRER NUMMER</span><i></i><b>FALLKLAR ÜBERNIMMT</b></div>
+        <figure class="routingSculpture" aria-hidden="true">
+          <img src="assets/fallklar-signal-routing.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+        </figure>
         <div class="routingFlow">
           <article><span>01</span><div><h3>Anliegen aufnehmen</h3><p>Wer ruft an, worum geht es und was ist bereits bekannt?</p></div></article>
           <article><span>02</span><div><h3>Fehlende Angaben nachfragen</h3><p>Nur die Fragen, die Ihr Team für dieses Anliegen braucht.</p></div></article>
