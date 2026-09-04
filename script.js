@@ -47,24 +47,24 @@
 
   const calls={
     urgent:{
-      meta:'Technischer Notdienst',
+      meta:'Technischer Bereitschaftsdienst',
       title:'„Unsere Kühlung ist ausgefallen. Der Betrieb startet um sechs.“',
-      urgency:'sofort',
+      urgency:'dringend',
       wait:false,
       capture:['Standort','Rückrufnummer','betroffene Anlage','Auswirkung & Zugang'],
       decision:'Bereitschaft jetzt informieren',
-      copy:'Mit Grund, Kontaktdaten und strukturierter Zusammenfassung.',
-      tag:'eskalieren'
+      copy:'Mit Situation, Rückrufnummer und allen erfassten Angaben.',
+      tag:'sofort'
     },
     wait:{
-      meta:'Terminorganisation',
+      meta:'Terminänderung',
       title:'„Ich möchte den Termin morgen verschieben.“',
-      urgency:'später',
+      urgency:'kann warten',
       wait:true,
       capture:['Name','Rückrufnummer','Auftragsbezug','gewünschte Rückrufzeit'],
-      decision:'Für das Büro vormerken',
-      copy:'Vollständige Übergabe für den nächsten Arbeitstag.',
-      tag:'nicht stören'
+      decision:'Für morgen an das Büro übergeben',
+      copy:'Mit Rückrufwunsch, Kontaktdaten und Auftragsbezug.',
+      tag:'später'
     }
   };
 
@@ -107,7 +107,7 @@
       if(!fieldValid) valid=false;
     });
     if(!valid){
-      error.textContent='Bitte füllen Sie alle Pflichtfelder vollständig aus.';
+      error.textContent='Bitte füllen Sie alle Pflichtfelder aus.';
       $('.invalid',form)?.focus();
       return;
     }
