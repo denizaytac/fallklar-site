@@ -1,0 +1,266 @@
+:root{
+  --signal-cyan:#86dce8;
+  --signal-orange:#ff7a3d;
+  --signal-glass:rgba(213,248,251,.16);
+}
+
+/* The generated glass objects stay separate from the interface; the live UI remains selectable and accessible. */
+.hero{
+  isolation:isolate;
+  min-height:calc(100svh - 1px);
+  padding-top:138px;
+  background:
+    radial-gradient(circle at 54% 48%,rgba(21,126,142,.2),transparent 31%),
+    radial-gradient(circle at 71% 18%,rgba(242,104,45,.08),transparent 27%),
+    linear-gradient(145deg,#052a30 0%,var(--deep) 44%,#05272c 100%);
+}
+.hero:after{display:none}
+.hero:before{z-index:4}
+.heroSignal{display:none}
+.signalCanvas{
+  position:absolute;
+  z-index:0;
+  inset:76px 0 0;
+  width:100%;
+  height:calc(100% - 76px);
+  opacity:.9;
+  pointer-events:none;
+}
+.heroGrid{
+  z-index:2;
+  grid-template-columns:minmax(0,1fr) minmax(500px,.82fr);
+  gap:clamp(105px,9vw,142px);
+  padding-bottom:62px;
+}
+.heroCopy{position:relative;z-index:4;max-width:610px}
+.hero h1{
+  max-width:600px;
+  font-size:clamp(62px,5.55vw,80px);
+  font-weight:770;
+  text-shadow:0 8px 36px rgba(0,0,0,.14);
+}
+.heroLead{max-width:585px;color:#bfd0d2}
+.heroActions{position:relative;z-index:2}
+.triggerBlock{max-width:585px}
+
+.heroSculpture{
+  position:absolute;
+  z-index:2;
+  top:20px;
+  left:52.8%;
+  width:clamp(310px,29vw,398px);
+  aspect-ratio:4/5;
+  margin:0;
+  transform:translateX(-50%);
+  pointer-events:none;
+  perspective:1100px;
+  filter:drop-shadow(0 32px 40px rgba(0,0,0,.28));
+}
+.heroSculptureAura{
+  position:absolute;
+  z-index:-1;
+  inset:16% -12% 4%;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 47% 54%,rgba(255,113,48,.26),transparent 13%),
+    radial-gradient(circle,rgba(56,181,197,.2),transparent 62%);
+  filter:blur(22px);
+  opacity:.8;
+}
+.heroSculptureInner{
+  width:100%;
+  height:100%;
+  transform-style:preserve-3d;
+  transform:
+    perspective(1100px)
+    rotateX(var(--sculpture-tilt-x,0deg))
+    rotateY(var(--sculpture-tilt-y,0deg))
+    translate3d(var(--sculpture-shift-x,0px),var(--sculpture-shift-y,0px),0);
+  transition:transform .18s ease-out;
+}
+.heroSculpture img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  animation:signalFloat 7.5s ease-in-out infinite;
+}
+@keyframes signalFloat{
+  0%,100%{transform:translate3d(0,-3px,0) rotate(-1deg)}
+  50%{transform:translate3d(0,10px,0) rotate(1.2deg)}
+}
+
+.callBoard{
+  z-index:3;
+  border-top-width:4px;
+  box-shadow:18px 22px 0 rgba(2,24,28,.72),0 30px 75px rgba(0,0,0,.24);
+  transform:
+    perspective(1500px)
+    rotateY(var(--board-tilt-y,0deg))
+    rotateX(var(--board-tilt-x,0deg));
+  transform-origin:75% 45%;
+  transition:transform .22s ease-out,box-shadow .28s var(--ease);
+}
+.callBoard:hover{box-shadow:14px 17px 0 rgba(2,24,28,.72),0 36px 82px rgba(0,0,0,.3)}
+.callBoard:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  border:1px solid rgba(255,255,255,.72);
+  pointer-events:none;
+}
+.callTab{transition:background .2s,color .2s,transform .2s}
+.callTab:hover{background:#fff;transform:translateY(-1px)}
+.decision{position:relative;overflow:hidden}
+.decision:after{
+  content:"";
+  position:absolute;
+  inset:-50% auto -50% -25%;
+  width:28%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:translateX(-200%) skewX(-18deg);
+  animation:decisionSweep 5.8s ease-in-out infinite;
+}
+@keyframes decisionSweep{0%,62%{transform:translateX(-200%) skewX(-18deg)}82%,100%{transform:translateX(520%) skewX(-18deg)}}
+
+.heroValue{
+  position:relative;
+  z-index:3;
+  background:linear-gradient(90deg,rgba(2,25,29,.34),rgba(8,47,53,.04));
+  backdrop-filter:blur(8px);
+}
+.heroValue>div{position:relative}
+.heroValue>div:after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:1px;
+  background:linear-gradient(90deg,var(--orange),transparent);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .45s var(--ease);
+}
+.heroValue>div:hover:after{transform:scaleX(1)}
+
+/* Carry the signal language through the page without turning every section into a card. */
+.activation{background:linear-gradient(180deg,#f5f8f7 0%,#fff 100%)}
+.activationRail article{position:relative;overflow:hidden;transition:background .28s,padding .28s var(--ease)}
+.activationRail article:before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--orange),var(--signal-cyan),transparent 80%);
+  transform:scaleX(.15);
+  transform-origin:left;
+  transition:transform .38s var(--ease);
+}
+.activationRail article:hover{background:rgba(223,239,240,.38)}
+.activationRail article:hover:before{transform:scaleX(1)}
+
+.routingBoard{isolation:isolate;overflow:hidden;box-shadow:18px 20px 0 var(--wash-2),0 24px 62px rgba(9,41,47,.16)}
+.routingTop,.routingFlow,.routingSplit{position:relative;z-index:2}
+.routingSculpture{
+  position:absolute;
+  z-index:0;
+  top:58px;
+  right:-5%;
+  width:105%;
+  height:360px;
+  margin:0;
+  pointer-events:none;
+  opacity:.48;
+  -webkit-mask-image:linear-gradient(to bottom,black 0%,black 66%,transparent 100%);
+  mask-image:linear-gradient(to bottom,black 0%,black 66%,transparent 100%);
+}
+.routingSculpture:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(8,47,53,.96) 0%,rgba(8,47,53,.78) 43%,rgba(8,47,53,.18) 100%);
+}
+.routingSculpture img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);animation:routingBreath 8s ease-in-out infinite}
+@keyframes routingBreath{50%{transform:scale(1.12) translateY(4px)}}
+.routingFlow{background:linear-gradient(90deg,rgba(8,47,53,.36),rgba(8,47,53,.05))}
+.processSteps article.active:before{width:3px}
+.processSteps article.active{padding-left:17px}
+.routingSplit{background:rgba(4,31,36,.92);backdrop-filter:blur(12px)}
+
+.outcomes{position:relative;isolation:isolate;background:linear-gradient(150deg,#062d33,#082f35 58%,#041f24)}
+.outcomes:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0 0 auto;
+  height:58%;
+  opacity:.22;
+  background-image:repeating-radial-gradient(ellipse at 64% 0%,transparent 0 16px,rgba(134,220,232,.2) 17px,transparent 18px 34px);
+  mask-image:linear-gradient(to bottom,black,transparent);
+}
+.outcomeSplit>article{position:relative;overflow:hidden}
+.outcomeSplit>article:after{
+  content:"";
+  position:absolute;
+  right:-80px;
+  bottom:-130px;
+  width:280px;
+  height:280px;
+  border:1px solid currentColor;
+  border-radius:50%;
+  opacity:.14;
+  box-shadow:0 0 0 28px transparent,0 0 0 29px currentColor,0 0 0 58px transparent,0 0 0 59px currentColor;
+}
+
+.pilot{position:relative;isolation:isolate;background:linear-gradient(142deg,#082f35 0%,#05262c 68%,#092f35 100%)}
+.pilot:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  background:radial-gradient(circle at 78% 22%,rgba(242,104,45,.14),transparent 24%),radial-gradient(circle at 16% 82%,rgba(27,145,164,.15),transparent 28%);
+}
+.pilotCard{box-shadow:18px 20px 0 var(--deep-2),0 25px 70px rgba(0,0,0,.2)}
+.formBox{box-shadow:18px 20px 0 rgba(8,47,53,.12),0 30px 60px rgba(8,47,53,.08)}
+
+@media(max-width:1120px){
+  .heroGrid{gap:74px;grid-template-columns:minmax(0,1fr) minmax(465px,1fr)}
+  .heroSculpture{left:50.5%;width:310px;opacity:.9}
+  .hero h1{font-size:clamp(54px,5.8vw,68px)}
+}
+
+@media(max-width:900px){
+  .hero{padding-top:116px}
+  .signalCanvas{inset:70px 0 0;height:calc(100% - 70px)}
+  .heroGrid{grid-template-columns:1fr;gap:34px}
+  .heroSculpture{
+    position:relative;
+    top:auto;
+    left:auto;
+    width:min(64vw,410px);
+    transform:none;
+    margin:-20px auto -128px;
+  }
+  .heroCopy{max-width:720px}
+  .callBoard{width:min(100%,680px);transform:none}
+}
+
+@media(max-width:680px){
+  .hero{padding-top:104px}
+  .signalCanvas{inset:70px 0 0;height:calc(100% - 70px);opacity:.68}
+  .heroGrid{gap:26px}
+  .hero h1{font-size:clamp(43px,12vw,53px)}
+  .heroSculpture{width:min(82vw,350px);margin:-18px auto -108px;opacity:.92}
+  .heroSculptureAura{filter:blur(16px)}
+  .callBoard{box-shadow:7px 9px 0 rgba(2,24,28,.72),0 25px 58px rgba(0,0,0,.22)}
+  .decision:after{display:none}
+  .routingSculpture{right:-18%;width:125%;opacity:.4}
+  .processSteps article.active{padding-left:12px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .heroSculpture img,.routingSculpture img,.decision:after{animation:none!important}
+  .heroSculptureInner,.callBoard{transform:none!important;transition:none!important}
+}
