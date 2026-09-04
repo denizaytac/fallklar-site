@@ -1,0 +1,65 @@
+name: Publish GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Materialize landing page source
+        shell: bash
+        run: |
+          if [ -f .bootstrap/page.part1 ]; then
+            cat .bootstrap/page.part1 .bootstrap/page.part2 | base64 --decode | gzip -d > index.html
+            rm -rf .bootstrap
+          fi
+
+      - name: Commit readable source
+        shell: bash
+        run: |
+          if ! git diff --quiet -- index.html .bootstrap 2>/dev/null || [ -n "$(git status --porcelain index.html .bootstrap 2>/dev/null)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A index.html .bootstrap
+            git commit -m "Add Fallklar landing page source"
+            git push
+          fi
+
+      - name: Prepare static site
+        shell: bash
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+          touch _site/.nojekyll
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
