@@ -3,13 +3,10 @@
   const $$=(selector,root=document)=>[...root.querySelectorAll(selector)];
 
   const header=$('[data-header]');
-  const progress=$('.progress i');
   let ticking=false;
   const updateScroll=()=>{
     const y=window.scrollY;
-    const distance=document.documentElement.scrollHeight-window.innerHeight;
     header?.classList.toggle('scrolled',y>8);
-    if(progress) progress.style.transform=`scaleX(${distance>0?Math.min(y/distance,1):0})`;
     ticking=false;
   };
   const onScroll=()=>{if(!ticking){requestAnimationFrame(updateScroll);ticking=true}};
