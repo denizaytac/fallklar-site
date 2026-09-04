@@ -1,6 +1,6 @@
 .caseFile{padding:132px 0 146px;background:var(--paper)}
 .caseLayout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:90px;align-items:start}
-.caseRail{position:sticky;top:112px;min-height:610px;padding:0 28px 28px 0;border-right:1px solid var(--line)}
+.caseRail{position:static;min-height:610px;padding:0 28px 28px 0;border-right:1px solid var(--line)}
 .railIntro>span{display:block;color:var(--muted);font-size:14px;font-weight:700}.railIntro>strong{display:block;margin-top:1px;font-family:var(--display);font-size:64px;line-height:1;letter-spacing:-.068em}.railIntro>p{margin:14px 0 0;color:var(--muted);font-size:17px;line-height:1.45}
 .railStages{margin:62px 0 0;padding:0;list-style:none}.railStages li{position:relative;display:grid;grid-template-columns:62px 1fr;gap:16px;min-height:76px;padding-left:18px;border-left:1px solid var(--line)}.railStages li:before{content:"";position:absolute;left:-4px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--paper);border:1px solid var(--ink)}.railStages li.active:before{background:var(--orange);border-color:var(--orange)}.railStages time{color:var(--muted);font:700 13px var(--mono)}.railStages span{font-size:16px;font-weight:720}
 .railDuration{margin:10px 0 0;padding-top:20px;border-top:1px solid var(--line)}.railDuration span{display:block;color:var(--muted);font-size:14px}.railDuration strong{display:block;margin-top:2px;font-family:var(--display);font-size:30px;line-height:1;letter-spacing:-.045em}
