@@ -182,7 +182,7 @@
           vec3 orange=vec3(1.,.31,.08);
           vec3 color=mix(cyan,orange,core*.72+rings*.18);
           float alpha=contour*.105+rings*.055+core*.025;
-          gl_FragColor=vec4(color,alpha);
+          gl_FragColor=vec4(color*alpha,alpha);
         }`;
       const compile=(type,source)=>{
         const shader=gl.createShader(type);
