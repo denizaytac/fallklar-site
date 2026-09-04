@@ -36,7 +36,7 @@ blockquote,figure{margin:0}
 .header.scrolled{box-shadow:0 12px 32px rgba(6,31,37,.07)}
 .head{height:74px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:48px}
 .brand{display:inline-flex;align-items:baseline;text-decoration:none;font-family:var(--display);font-size:29px;line-height:1;font-weight:850;letter-spacing:-.078em}
-.nav{display:flex;justify-content:center;gap:40px}.nav a{position:relative;text-decoration:none;color:var(--ink-2);font-size:14px;font-weight:720}.nav a:after{content:"";position:absolute;left:0;right:100%;bottom:-9px;height:2px;background:var(--ink);transition:right .2s var(--ease)}.nav a:hover:after,.nav a:focus-visible:after{right:0}
+.nav{display:flex;justify-content:center;gap:40px}.nav a{position:relative;text-decoration:none;color:var(--ink-2);font-size:15px;font-weight:720}.nav a:after{content:"";position:absolute;left:0;right:100%;bottom:-9px;height:2px;background:var(--ink);transition:right .2s var(--ease)}.nav a:hover:after,.nav a:focus-visible:after{right:0}
 .headerCta{min-height:45px;display:inline-flex;align-items:center;gap:22px;padding:0 16px 0 19px;background:var(--ink);color:#fff;text-decoration:none;font-size:14px;font-weight:730;transition:background .2s,transform .2s}.headerCta svg{width:18px;height:18px;fill:none;stroke:var(--orange);stroke-width:1.9}.headerCta:hover{background:var(--night);transform:translateY(-1px)}
 .menu{display:none}
 
@@ -53,9 +53,9 @@ blockquote,figure{margin:0}
 .heroInner{position:relative;z-index:2;height:100%;display:flex;align-items:center;padding-bottom:18px}
 .heroCopy{width:min(730px,60vw)}
 .eyebrow{color:#b8c7c9}
-.hero h1{margin:24px 0 0;font-family:var(--display);font-size:clamp(72px,6.65vw,96px);font-weight:790;line-height:.91;letter-spacing:-.069em}
+.hero h1{margin:24px 0 0;font-family:var(--display);font-size:clamp(72px,6.65vw,96px);font-weight:790;line-height:.94;letter-spacing:-.066em}
 .heroLead{max-width:610px;margin:30px 0 0;color:#c3d0d2;font-size:19px;line-height:1.58;letter-spacing:-.014em}.heroLead strong{color:#fff;font-weight:760}
-.heroCopy>.btn{margin-top:35px}
+.heroCopy>.btn{min-height:66px;margin-top:35px;padding-inline:25px 20px;font-size:16px}
 .heroPrompt{position:absolute;z-index:3;left:50%;bottom:28px;display:flex;align-items:center;justify-content:space-between;padding-top:15px;border-top:1px solid rgba(255,255,255,.55);color:#fff;text-decoration:none;transform:translateX(-50%);font-size:15px;font-weight:680}.heroPrompt b{font:700 20px var(--mono)}
 
 .footer{overflow:hidden;background:#020e11;color:#fff;border-top:1px solid rgba(255,255,255,.18)}
