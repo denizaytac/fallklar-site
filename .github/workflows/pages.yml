@@ -49,7 +49,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p _site
-          cp index.html _site/index.html
+          cp index.html styles-base.css styles-sections.css styles-responsive.css script.js _site/
           touch _site/.nojekyll
 
       - name: Configure GitHub Pages
