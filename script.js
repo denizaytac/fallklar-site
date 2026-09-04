@@ -132,6 +132,7 @@
   const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if(hero&&canvas){
+    let fieldPointer=[.55,.5];
     const setDepth=(x=0,y=0)=>{
       hero.style.setProperty('--sculpture-tilt-x',`${(-y*3).toFixed(2)}deg`);
       hero.style.setProperty('--sculpture-tilt-y',`${(x*5).toFixed(2)}deg`);
@@ -143,6 +144,7 @@
     hero.addEventListener('pointermove',event=>{
       const bounds=hero.getBoundingClientRect();
       setDepth((event.clientX-bounds.left)/bounds.width*2-1,(event.clientY-bounds.top)/bounds.height*2-1);
+      fieldPointer=[(event.clientX-bounds.left)/bounds.width,1-(event.clientY-bounds.top)/bounds.height];
     },{passive:true});
     hero.addEventListener('pointerleave',()=>setDepth());
 
@@ -201,12 +203,7 @@
         const resolution=gl.getUniformLocation(program,'r');
         const mouse=gl.getUniformLocation(program,'m');
         const time=gl.getUniformLocation(program,'t');
-        let pointer=[.55,.5];
         let running=true;
-        hero.addEventListener('pointermove',event=>{
-          const bounds=hero.getBoundingClientRect();
-          pointer=[(event.clientX-bounds.left)/bounds.width,1-(event.clientY-bounds.top)/bounds.height];
-        },{passive:true});
         const resize=()=>{
           const dpr=Math.min(devicePixelRatio||1,1.6);
           const width=Math.round(canvas.clientWidth*dpr);
@@ -217,9 +214,52 @@
           resize();
           gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);
           gl.uniform2f(resolution,canvas.width,canvas.height);
-          gl.uniform2f(mouse,pointer[0],pointer[1]);
+          gl.uniform2f(mouse,fieldPointer[0],fieldPointer[1]);
           gl.uniform1f(time,reducedMotion?0:now*.001);
           gl.drawArrays(gl.TRIANGLES,0,6);
+          if(running&&!reducedMotion) requestAnimationFrame(draw);
+        };
+        if('IntersectionObserver' in window&&!reducedMotion){
+          new IntersectionObserver(([entry])=>{
+            const next=entry.isIntersecting;
+            if(next&&!running){running=true;requestAnimationFrame(draw)}
+            running=next;
+          }).observe(hero);
+        }
+        requestAnimationFrame(draw);
+      }
+    }else{
+      const context=canvas.getContext('2d');
+      if(context){
+        let running=true;
+        const draw=now=>{
+          const dpr=Math.min(devicePixelRatio||1,1.6);
+          const width=Math.max(1,Math.round(canvas.clientWidth));
+          const height=Math.max(1,Math.round(canvas.clientHeight));
+          if(canvas.width!==Math.round(width*dpr)||canvas.height!==Math.round(height*dpr)){
+            canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
+          }
+          context.setTransform(dpr,0,0,dpr,0,0);
+          context.clearRect(0,0,width,height);
+          const phase=(reducedMotion?0:now*.00022);
+          context.lineWidth=1;
+          for(let line=0;line<20;line++){
+            context.beginPath();
+            for(let x=-24;x<=width+24;x+=18){
+              const base=height*(.09+line*.045);
+              const y=base+Math.sin(x*.008+line*.46+phase*8)*20+Math.sin(x*.0028-line*.2-phase*4)*28;
+              if(x===-24) context.moveTo(x,y); else context.lineTo(x,y);
+            }
+            context.strokeStyle=`rgba(134,220,232,${(.025+line*.0015).toFixed(3)})`;
+            context.stroke();
+          }
+          const px=fieldPointer[0]*width;
+          const py=(1-fieldPointer[1])*height;
+          const glow=context.createRadialGradient(px,py,0,px,py,Math.min(width,height)*.28);
+          glow.addColorStop(0,'rgba(255,113,48,.075)');
+          glow.addColorStop(.4,'rgba(89,203,216,.035)');
+          glow.addColorStop(1,'rgba(89,203,216,0)');
+          context.fillStyle=glow;context.fillRect(0,0,width,height);
           if(running&&!reducedMotion) requestAnimationFrame(draw);
         };
         if('IntersectionObserver' in window&&!reducedMotion){
