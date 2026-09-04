@@ -1,6 +1,4 @@
 ::selection{background:var(--orange);color:#fff}
-.heroCopy{animation:rise .7s var(--ease) both}.heroHandoff{animation:rise .7s .12s var(--ease) both}
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.caseTab{transition:color .18s,background .18s}.caseTab:hover{background:#e9ece8;color:var(--ink)}
-details[open] summary{color:var(--ink-2)}
-@media(prefers-reduced-motion:reduce){.heroCopy,.heroHandoff{animation:none}}
+.heroCopy{animation:rise .75s var(--ease) both}.heroPrompt{animation:rise .75s .14s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.heroCopy,.heroPrompt{animation:none}}
