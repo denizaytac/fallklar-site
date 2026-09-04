@@ -39,3 +39,18 @@
   *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
+@media(max-width:980px){
+  .heroArtifact{height:610px}
+  .experienceHead{grid-template-columns:1fr;gap:27px;padding-top:72px}.experienceHead>div:last-child>p{max-width:650px}.experienceHead .callTabs{max-width:440px}
+  .experienceGrid{grid-template-columns:1fr 1fr}.experienceGrid>article{min-height:360px}.experienceGrid>article:nth-child(3){grid-column:1/-1;min-height:310px;border-left:0;border-top:1px solid var(--line)}.stageDecision .decision{max-width:520px}
+}
+@media(max-width:700px){
+  .heroArtifact{height:auto}.heroArtifact>img{height:470px}.heroArtifact figcaption{right:14px;left:14px;justify-content:space-between}.heroCall{position:static;grid-template-columns:1fr 1fr;min-height:0;padding:18px 16px}.heroCall>strong{grid-column:1/-1;grid-row:1;padding:0 0 15px;border:0;border-bottom:1px solid var(--line-dark);font-size:22px}.heroCall>span:last-child{grid-column:1/-1;padding-top:5px}
+  .experienceHead{padding-top:62px}.experienceHead h2{font-size:clamp(38px,10.5vw,48px)}.experienceHead .callTabs{max-width:none}
+  .experienceGrid{grid-template-columns:1fr}.experienceGrid>article,.experienceGrid>article:nth-child(3){grid-column:auto;min-height:auto;padding:25px 22px}.experienceGrid>article+article,.experienceGrid>article:nth-child(3){border-left:0;border-top:1px solid var(--line)}
+  .stageTime,.stageClarify h3,.urgency{margin-top:34px}.stageIncoming h3{margin-top:27px;font-size:27px}.stageClarify p{margin-top:26px}.stageDecision>b{margin-top:25px}
+}
+@media(max-width:420px){
+  .heroArtifact>img{height:400px}.heroCall{grid-template-columns:1fr}.heroCall>strong,.heroCall>span:last-child{grid-column:1}
+  .stageClarify ul{grid-template-columns:1fr}
+}

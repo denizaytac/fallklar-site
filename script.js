@@ -38,6 +38,7 @@
 
   const calls={
     urgent:{
+      time:'22:47',
       meta:'Technischer Bereitschaftsdienst',
       title:'„Unsere Kühlung ist ausgefallen. Der Betrieb startet um sechs.“',
       urgency:'dringend',
@@ -48,6 +49,7 @@
       tag:'sofort'
     },
     wait:{
+      time:'18:12',
       meta:'Terminänderung',
       title:'„Ich möchte den Termin morgen verschieben.“',
       urgency:'kann warten',
@@ -70,6 +72,7 @@
       item.tabIndex=active?0:-1;
     });
     $('[data-call-meta]').textContent=data.meta;
+    $('[data-call-time]').textContent=data.time;
     $('[data-call-title]').textContent=data.title;
     const urgency=$('[data-urgency]');
     urgency.textContent=data.urgency;
@@ -145,4 +148,3 @@
   const year=$('[data-year]');
   if(year) year.textContent=new Date().getFullYear();
 })();
-
