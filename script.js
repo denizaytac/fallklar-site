@@ -38,32 +38,20 @@
 
   const cases={
     urgent:{
-      time:'22:47:03',
-      type:'Technischer Bereitschaftsdienst',
-      status:'SOFORT',
-      wait:false,
+      time:'22:47:03',type:'Technischer Bereitschaftsdienst',status:'SOFORT',wait:false,
       quote:'„Die Kühlung ist ausgefallen. Der Betrieb startet um sechs.“',
-      fields:[['Standort','Werk 2'],['Rückruf','vorhanden'],['Anlage','Kühlung'],['Auswirkung','Produktionsstart gefährdet']],
-      rule:'Kritische Anlage + Ausfall vor Betriebsstart',
-      duration:'+02:02',
-      total:'02:02',
+      fields:'Standort · Rückruf · Anlage · Auswirkung',
+      rule:'Kritische Anlage + Ausfall vor Betriebsstart',total:'02:02',
       decision:'Bereitschaft jetzt informieren.',
-      copy:'Mit Situation, Rückrufnummer und allen vier Pflichtangaben.',
-      handoff:'22:49:05'
+      copy:'Mit Situation, Rückrufnummer und allen vier Pflichtangaben.',handoff:'22:49:05'
     },
     wait:{
-      time:'18:12:14',
-      type:'Terminänderung',
-      status:'MORGEN',
-      wait:true,
+      time:'18:12:14',type:'Terminänderung',status:'MORGEN',wait:true,
       quote:'„Ich möchte den Termin morgen verschieben und brauche einen Rückruf.“',
-      fields:[['Name','vorhanden'],['Rückruf','vorhanden'],['Auftrag','Nr. 417'],['Rückrufzeit','08:00–10:00']],
-      rule:'Kein akuter Handlungsbedarf',
-      duration:'+01:32',
-      total:'01:32',
+      fields:'Name · Rückruf · Auftragsbezug · Rückrufzeit',
+      rule:'Kein akuter Handlungsbedarf',total:'01:32',
       decision:'Für morgen 08:00 vormerken.',
-      copy:'Mit Rückrufwunsch, Kontaktdaten und Auftragsbezug.',
-      handoff:'18:13:46'
+      copy:'Mit Rückrufwunsch, Kontaktdaten und Auftragsbezug.',handoff:'18:13:46'
     }
   };
 
@@ -82,14 +70,13 @@
     $('[data-case-status]').textContent=data.status;
     $('[data-case-status]').classList.toggle('wait',data.wait);
     $('[data-case-quote]').textContent=data.quote;
-    $('[data-case-fields]').innerHTML=data.fields.map(([term,value])=>`<div><dt>${term}</dt><dd>${value}</dd></div>`).join('');
+    $('[data-case-fields-inline]').textContent=data.fields;
     $('[data-case-rule]').textContent=data.rule;
-    $('[data-case-duration]').textContent=data.duration;
     $('[data-case-total]').textContent=data.total;
     $('[data-case-decision]').textContent=data.decision;
     $('[data-case-copy]').textContent=data.copy;
     $('[data-case-handoff]').textContent=data.handoff;
-    $('.incidentBoard').classList.toggle('wait',data.wait);
+    $('.incident').classList.toggle('wait',data.wait);
   };
   caseTabs.forEach((tab,index)=>{
     tab.addEventListener('click',()=>setCase(tab));
@@ -118,29 +105,15 @@
       field.setAttribute('aria-invalid',String(!fieldValid));
       if(!fieldValid) valid=false;
     });
-    if(!valid){
-      error.textContent='Bitte füllen Sie alle Pflichtfelder aus.';
-      $('.invalid',form)?.focus();
-      return;
-    }
+    if(!valid){error.textContent='Bitte füllen Sie alle Pflichtfelder aus.';$('.invalid',form)?.focus();return}
     error.textContent='';
     form.hidden=true;
     success.hidden=false;
   });
-  if(form){
-    $$('input,select,textarea',form).forEach(field=>{
-      ['input','change'].forEach(eventName=>field.addEventListener(eventName,()=>{
-        field.classList.remove('invalid');
-        field.removeAttribute('aria-invalid');
-      }));
-    });
-  }
-  $('.reset')?.addEventListener('click',()=>{
-    form.reset();
-    form.hidden=false;
-    success.hidden=true;
-    $('input',form)?.focus();
+  if(form) $$('input,select,textarea',form).forEach(field=>{
+    ['input','change'].forEach(eventName=>field.addEventListener(eventName,()=>{field.classList.remove('invalid');field.removeAttribute('aria-invalid')}));
   });
+  $('.reset')?.addEventListener('click',()=>{form.reset();form.hidden=false;success.hidden=true;$('input',form)?.focus()});
 
   const year=$('[data-year]');
   if(year) year.textContent=new Date().getFullYear();

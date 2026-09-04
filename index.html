@@ -55,113 +55,102 @@
     </div>
   </section>
 
-  <section class="premise">
-    <div class="shell premiseGrid">
-      <p class="sectionTag">Worum es geht</p>
-      <h2>Nicht mehr Anrufe.<br>Sondern klare Fälle.</h2>
-      <div class="premiseCopy">
-        <p>Wenn niemand abnimmt, übernimmt Fallklar genau die Situation, die Sie vorher festlegen: nach Feierabend, während der Bereitschaft oder nach einer bestimmten Klingeldauer.</p>
-        <div class="triggers" aria-label="Mögliche Einsatzzeiten"><span>Feierabend</span><span>Bereitschaft</span><span>Überlauf</span></div>
-      </div>
+  <section class="triggerBand" aria-label="Einsatzzeiten">
+    <div class="shell triggerGrid">
+      <p class="sectionTag">Übernahme</p>
+      <h2>Feierabend. Bereitschaft. Überlauf.</h2>
+      <p>Fallklar übernimmt genau dann, wenn niemand abnimmt oder Ihr Team nicht gestört werden soll. Nummer und Telefonie bleiben erhalten.</p>
     </div>
   </section>
 
   <section class="incident" id="ablauf">
     <div class="shell">
       <div class="incidentHead">
-        <p class="sectionTag">Ein Anruf, Schritt für Schritt</p>
-        <h2>Von „Hallo?“ bis zur klaren Übergabe in <span data-case-total>02:02</span>.</h2>
+        <div><p class="sectionTag">Der Mechanismus</p><h2>So wird aus einem Anruf ein klarer Fall.</h2></div>
+        <p>Fragen, Dringlichkeitsregeln und Übergabeweg werden für Ihren Einsatz festgelegt. Hier sehen Sie zwei typische Verläufe.</p>
+      </div>
+
+      <div class="caseChooser">
+        <span>Beispiel wählen</span>
         <div class="caseTabs" role="tablist" aria-label="Beispielanrufe">
           <button class="caseTab active" type="button" role="tab" aria-selected="true" data-case="urgent"><b>22:47</b><span>Störung</span></button>
           <button class="caseTab" type="button" role="tab" aria-selected="false" data-case="wait"><b>18:12</b><span>Termin</span></button>
         </div>
       </div>
 
-      <div class="incidentBoard">
-        <article class="caseFile">
-          <div class="caseTop"><span data-case-type>Technischer Bereitschaftsdienst</span><b data-case-status>SOFORT</b></div>
-          <time data-case-time>22:47:03</time>
-          <blockquote data-case-quote>„Die Kühlung ist ausgefallen. Der Betrieb startet um sechs.“</blockquote>
-          <p>Originalanliegen, von Fallklar im Gespräch geklärt.</p>
-        </article>
+      <article class="callOrigin">
+        <time data-case-time>22:47:03</time>
+        <blockquote data-case-quote>„Die Kühlung ist ausgefallen. Der Betrieb startet um sechs.“</blockquote>
+        <div><span data-case-type>Technischer Bereitschaftsdienst</span><b data-case-status>SOFORT</b></div>
+      </article>
 
-        <ol class="trace">
-          <li>
-            <div class="traceTime"><b>+00:00</b><span>Annehmen</span></div>
-            <div class="traceBody"><h3>Der Anruf wird zum Vorgang.</h3><p>Fallklar meldet sich im Namen Ihres Unternehmens und erklärt transparent, dass eine KI-Assistenz das Anliegen aufnimmt.</p></div>
-          </li>
-          <li>
-            <div class="traceTime"><b>+00:31</b><span>Klären</span></div>
-            <div class="traceBody"><h3>Vier Angaben, die Ihr Team braucht.</h3><dl data-case-fields><div><dt>Standort</dt><dd>Werk 2</dd></div><div><dt>Rückruf</dt><dd>vorhanden</dd></div><div><dt>Anlage</dt><dd>Kühlung</dd></div><div><dt>Auswirkung</dt><dd>Produktionsstart gefährdet</dd></div></dl></div>
-          </li>
-          <li>
-            <div class="traceTime"><b>+01:23</b><span>Prüfen</span></div>
-            <div class="traceBody"><h3>Ihre Regel entscheidet über das Timing.</h3><p class="ruleText"><span>Vereinbarte Regel</span><strong data-case-rule>Kritische Anlage + Ausfall vor Betriebsstart</strong></p></div>
-          </li>
-          <li class="handoff">
-            <div class="traceTime"><b data-case-duration>+02:02</b><span>Übergeben</span></div>
-            <div class="traceBody"><span class="decisionLabel">Nächster Schritt</span><h3 data-case-decision>Bereitschaft jetzt informieren.</h3><p data-case-copy>Mit Situation, Rückrufnummer und allen vier Pflichtangaben.</p><div class="handoffStamp"><span>ÜBERGEBEN</span><b data-case-handoff>22:49:05</b></div></div>
-          </li>
-        </ol>
-      </div>
-      <p class="incidentNote">Beispielhafter Ablauf. Fragen, Regeln und Übergabeweg werden für Ihren Einsatz festgelegt.</p>
+      <ol class="callSteps">
+        <li>
+          <span class="stepTime">+00:00</span>
+          <h3>Annehmen</h3>
+          <p>Fallklar meldet sich transparent im Namen Ihres Unternehmens und macht aus dem Anruf einen Vorgang.</p>
+        </li>
+        <li>
+          <span class="stepTime">+00:31</span>
+          <h3>Klären</h3>
+          <p>Nur die Angaben, die Ihr Team braucht:</p>
+          <strong data-case-fields-inline>Standort · Rückruf · Anlage · Auswirkung</strong>
+        </li>
+        <li>
+          <span class="stepTime">+01:23</span>
+          <h3>Prüfen</h3>
+          <p>Die vereinbarte Regel:</p>
+          <strong data-case-rule>Kritische Anlage + Ausfall vor Betriebsstart</strong>
+        </li>
+        <li class="finalStep">
+          <div class="duration"><span>Gesamtdauer</span><strong data-case-total>02:02</strong></div>
+          <div><span class="decisionLabel">Nächster Schritt</span><h3 data-case-decision>Bereitschaft jetzt informieren.</h3><p data-case-copy>Mit Situation, Rückrufnummer und allen vier Pflichtangaben.</p><time data-case-handoff>22:49:05</time></div>
+        </li>
+      </ol>
+      <p class="incidentNote">Beispielhafter Ablauf. Fallklar erfasst und ordnet nach Ihren Regeln ein; die fachliche Entscheidung bleibt bei Ihrem Team.</p>
     </div>
   </section>
 
   <section class="proof" id="wirkung">
-    <div class="shell proofTop">
-      <p class="sectionTag light">Zwei Anrufe am selben Abend</p>
-      <h2>Die Bereitschaft wurde um 22:49 informiert. Nicht um 18:12.</h2>
-      <p class="proofIntro">Fallklar unterscheidet nicht nach Bauchgefühl, sondern nach den Regeln, die Ihr Team vorgibt.</p>
-    </div>
-    <div class="shell ledger" aria-label="Vergleich zweier Beispielanrufe">
-      <article class="ledgerUrgent">
-        <time>22:47</time>
-        <div><span>Technische Störung</span><strong>Wasser tritt weiter aus. Technikraum betroffen.</strong></div>
-        <p><span>Regel erfüllt</span>Aktiver Austritt + kritischer Bereich</p>
-        <b>SOFORT</b>
-      </article>
-      <article>
-        <time>18:12</time>
-        <div><span>Terminänderung</span><strong>Termin morgen verschieben. Rückruf erbeten.</strong></div>
-        <p><span>Kein akuter Handlungsbedarf</span>Vollständig für 08:00 vorgemerkt</p>
-        <b>MORGEN</b>
-      </article>
-    </div>
-    <div class="shell proofMeasure">
-      <p>Im gezeigten Störungsfall</p>
-      <div><strong>02:02</strong><span>bis zur Übergabe</span></div>
-      <div><strong>4 / 4</strong><span>Pflichtangaben vorhanden</span></div>
-      <div><strong>1</strong><span>gezielte Unterbrechung</span></div>
+    <div class="shell proofGrid">
+      <figure class="proofPhoto">
+        <img src="assets/fallklar-handoff.webp" alt="Techniker prüft nachts eine Meldung in einer Industrieanlage" width="1122" height="1402" loading="lazy" decoding="async">
+        <figcaption><span>Beispielszenario</span><b>22:49 · Bereitschaft informiert</b></figcaption>
+      </figure>
+      <div class="proofStory">
+        <p class="sectionTag light">Derselbe Abend</p>
+        <h2>22:49 informiert.<br>18:12 nicht gestört.</h2>
+        <p class="proofIntro">Fallklar entscheidet nicht nach Bauchgefühl. Es folgt den Regeln, die Ihr Team vorher festlegt.</p>
+        <div class="proofLedger">
+          <article class="urgentCall"><time>22:47</time><div><span>Störung</span><strong>Wasser tritt weiter aus. Technikraum betroffen.</strong><p>Regel erfüllt: aktiver Austritt + kritischer Bereich.</p></div><b>SOFORT</b></article>
+          <article><time>18:12</time><div><span>Termin</span><strong>Termin morgen verschieben. Rückruf erbeten.</strong><p>Kein akuter Handlungsbedarf. Für 08:00 vorgemerkt.</p></div><b>MORGEN</b></article>
+        </div>
+        <div class="proofResult"><strong>4 / 4</strong><p>Pflichtangaben lagen im gezeigten Störungsfall bei der Übergabe bereits vor.</p></div>
+      </div>
     </div>
   </section>
 
-  <section class="criteria">
-    <div class="shell criteriaGrid">
-      <div>
-        <p class="sectionTag">Die entscheidende Frage</p>
-        <h2>Lässt sich klar sagen, was sofort passieren muss?</h2>
-      </div>
-      <div class="criteriaBody">
-        <p class="fitYes"><span>Dann passt Fallklar</span>Wichtige Anrufe kommen außerhalb sicher besetzter Zeiten. Die gleichen Kernfragen kehren wieder. Dringlichkeit lässt sich an klaren Merkmalen erkennen.</p>
-        <p><span>Eher nicht</span>Jeder Anruf braucht unmittelbar fachliche Diagnose, Beratung oder eine verbindliche Einsatzentscheidung.</p>
-        <small>Typische Einsatzfelder: technischer Service, Schaden- und Bereitschaftsdienste, Immobilien, Facility und Handwerk.</small>
-      </div>
+  <section class="fitBand">
+    <div class="shell fitGrid">
+      <h2>Passt Fallklar?</h2>
+      <p><strong>Ja, wenn</strong> wichtige Anrufe außerhalb sicher besetzter Zeiten kommen, Kernfragen wiederkehren und Dringlichkeit klar beschreibbar ist.</p>
+      <p><strong>Eher nicht, wenn</strong> jeder Anruf unmittelbar fachliche Diagnose, Beratung oder eine verbindliche Einsatzentscheidung braucht.</p>
     </div>
   </section>
 
   <section class="pilot" id="pilot">
-    <div class="shell pilotMast">
-      <div class="pilotNumber"><strong>06</strong><span>Wochen</span></div>
-      <div class="pilotPitch"><p class="sectionTag light">Founding Pilot</p><h2>Eine Situation testen. Danach wissen, ob es trägt.</h2></div>
-      <div class="pilotPrice"><span>einmalig / netto</span><strong>750 €</strong><small>keine automatische Verlängerung</small></div>
+    <div class="shell pilotGrid">
+      <div class="pilotPitch"><p class="sectionTag light">Founding Pilot</p><h2>Sechs Wochen. Eine Situation. Eine klare Entscheidung.</h2></div>
+      <aside class="pilotOffer"><span>einmalig / netto</span><strong>750 €</strong><p>Keine automatische Verlängerung. Ihre übrige Telefonie bleibt unangetastet.</p></aside>
     </div>
-    <div class="shell pilotSteps">
-      <article><span>Woche 1</span><h3>Festlegen</h3><p>Übernahmezeitpunkt, Pflichtfragen, Zuständigkeiten und Dringlichkeitsregeln.</p></article>
-      <article><span>Woche 2–5</span><h3>Echt testen</h3><p>Ausgewählte Anrufe übernehmen, Übergaben prüfen und Regeln gezielt nachschärfen.</p></article>
-      <article><span>Woche 6</span><h3>Entscheiden</h3><p>Vollständigkeit, Weitergaben und operative Entlastung gemeinsam auswerten.</p></article>
+    <div class="shell pilotRoute" aria-label="Ablauf des Piloten">
+      <div><span>Woche 1</span><strong>Festlegen</strong><p>Fragen, Regeln, Zuständigkeiten</p></div>
+      <i>→</i>
+      <div><span>Woche 2–5</span><strong>Live testen</strong><p>Ausgewählte echte Anrufe</p></div>
+      <i>→</i>
+      <div><span>Woche 6</span><strong>Entscheiden</strong><p>Gemeinsam auswerten</p></div>
     </div>
-    <div class="shell boundary"><span>Klare Grenze</span><p>Fallklar nimmt auf und ordnet nach Ihren Regeln ein. Diagnose, verbindliche Zusagen und finale Einsatzentscheidungen bleiben bei Ihrem Team.</p></div>
+    <div class="shell pilotBoundary"><span>Klare Grenze</span><p>Fallklar nimmt auf und ordnet ein. Diagnose, verbindliche Zusagen und finale Einsatzentscheidungen bleiben bei Ihrem Team.</p></div>
   </section>
 
   <section class="request" id="anfrage">
@@ -169,8 +158,8 @@
       <div class="requestCopy">
         <p class="sectionTag">Pilot anfragen</p>
         <h2>Wo geht heute ein wichtiger Anruf ins Leere?</h2>
-        <p>Im ersten Gespräch klären wir genau einen Startfall. Danach ist klar, ob der sechswöchige Pilot für Sie sinnvoll ist.</p>
-        <div class="requestTerms"><span>01 · eine Situation</span><span>02 · Ihre Regeln</span><span>03 · gemeinsame Auswertung</span></div>
+        <p>Im ersten Gespräch klären wir genau einen Startfall. Danach wissen Sie, ob der sechswöchige Pilot sinnvoll ist.</p>
+        <blockquote>Eine Situation. Ihre Regeln. Eine gemeinsame Auswertung.</blockquote>
       </div>
       <div class="formBox">
         <form id="form" novalidate>
