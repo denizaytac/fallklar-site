@@ -33,81 +33,78 @@
     if(menuLabel) menuLabel.textContent=open?'Navigation schließen':'Navigation öffnen';
   });
   $$('.nav a').forEach(link=>link.addEventListener('click',closeMenu));
-  addEventListener('resize',()=>{if(innerWidth>980) closeMenu()});
+  addEventListener('resize',()=>{if(innerWidth>880) closeMenu()});
   addEventListener('keydown',event=>{if(event.key==='Escape') closeMenu()});
 
-  const calls={
+  const cases={
     urgent:{
-      time:'22:47',
-      meta:'Technischer Bereitschaftsdienst',
-      title:'„Unsere Kühlung ist ausgefallen. Der Betrieb startet um sechs.“',
-      urgency:'dringend',
+      time:'22:47:03',
+      type:'Technischer Bereitschaftsdienst',
+      status:'SOFORT',
       wait:false,
-      capture:['Standort','Rückrufnummer','betroffene Anlage','Auswirkung & Zugang'],
-      decision:'Bereitschaft jetzt informieren',
-      copy:'Mit Situation, Rückrufnummer und allen erfassten Angaben.',
-      tag:'sofort'
+      quote:'„Die Kühlung ist ausgefallen. Der Betrieb startet um sechs.“',
+      fields:[['Standort','Werk 2'],['Rückruf','vorhanden'],['Anlage','Kühlung'],['Auswirkung','Produktionsstart gefährdet']],
+      rule:'Kritische Anlage + Ausfall vor Betriebsstart',
+      duration:'+02:02',
+      total:'02:02',
+      decision:'Bereitschaft jetzt informieren.',
+      copy:'Mit Situation, Rückrufnummer und allen vier Pflichtangaben.',
+      handoff:'22:49:05'
     },
     wait:{
-      time:'18:12',
-      meta:'Terminänderung',
-      title:'„Ich möchte den Termin morgen verschieben.“',
-      urgency:'kann warten',
+      time:'18:12:14',
+      type:'Terminänderung',
+      status:'MORGEN',
       wait:true,
-      capture:['Name','Rückrufnummer','Auftragsbezug','gewünschte Rückrufzeit'],
-      decision:'Für morgen an das Büro übergeben',
+      quote:'„Ich möchte den Termin morgen verschieben und brauche einen Rückruf.“',
+      fields:[['Name','vorhanden'],['Rückruf','vorhanden'],['Auftrag','Nr. 417'],['Rückrufzeit','08:00–10:00']],
+      rule:'Kein akuter Handlungsbedarf',
+      duration:'+01:32',
+      total:'01:32',
+      decision:'Für morgen 08:00 vormerken.',
       copy:'Mit Rückrufwunsch, Kontaktdaten und Auftragsbezug.',
-      tag:'später'
+      handoff:'18:13:46'
     }
   };
 
-  const callTabs=$$('[data-call]');
-  const activateCall=tab=>{
-    const data=calls[tab.dataset.call];
+  const caseTabs=$$('[data-case]');
+  const setCase=tab=>{
+    const data=cases[tab.dataset.case];
     if(!data) return;
-    callTabs.forEach(item=>{
+    caseTabs.forEach(item=>{
       const active=item===tab;
       item.classList.toggle('active',active);
       item.setAttribute('aria-selected',String(active));
       item.tabIndex=active?0:-1;
     });
-    $('[data-call-meta]').textContent=data.meta;
-    $('[data-call-time]').textContent=data.time;
-    $('[data-call-title]').textContent=data.title;
-    const urgency=$('[data-urgency]');
-    urgency.textContent=data.urgency;
-    urgency.classList.toggle('wait',data.wait);
-    $('[data-capture]').innerHTML=data.capture.map(item=>`<li>${item}</li>`).join('');
-    $('[data-decision-title]').textContent=data.decision;
-    $('[data-decision-copy]').textContent=data.copy;
-    $('[data-decision-tag]').textContent=data.tag;
-    const decision=$('[data-decision]');
-    decision.classList.toggle('urgent',!data.wait);
-    decision.classList.toggle('wait',data.wait);
+    $('[data-case-time]').textContent=data.time;
+    $('[data-case-type]').textContent=data.type;
+    $('[data-case-status]').textContent=data.status;
+    $('[data-case-status]').classList.toggle('wait',data.wait);
+    $('[data-case-quote]').textContent=data.quote;
+    $('[data-case-fields]').innerHTML=data.fields.map(([term,value])=>`<div><dt>${term}</dt><dd>${value}</dd></div>`).join('');
+    $('[data-case-rule]').textContent=data.rule;
+    $('[data-case-duration]').textContent=data.duration;
+    $('[data-case-total]').textContent=data.total;
+    $('[data-case-decision]').textContent=data.decision;
+    $('[data-case-copy]').textContent=data.copy;
+    $('[data-case-handoff]').textContent=data.handoff;
+    $('.incidentBoard').classList.toggle('wait',data.wait);
   };
-  callTabs.forEach((tab,index)=>{
-    tab.addEventListener('click',()=>activateCall(tab));
+  caseTabs.forEach((tab,index)=>{
+    tab.addEventListener('click',()=>setCase(tab));
     tab.addEventListener('keydown',event=>{
       if(!['ArrowLeft','ArrowRight'].includes(event.key)) return;
       event.preventDefault();
-      const next=event.key==='ArrowRight'?(index+1)%callTabs.length:(index-1+callTabs.length)%callTabs.length;
-      activateCall(callTabs[next]);
-      callTabs[next].focus();
+      const next=event.key==='ArrowRight'?(index+1)%caseTabs.length:(index-1+caseTabs.length)%caseTabs.length;
+      setCase(caseTabs[next]);
+      caseTabs[next].focus();
     });
   });
 
   $$('details').forEach(detail=>detail.addEventListener('toggle',()=>{
     if(detail.open) $$('details[open]').forEach(other=>{if(other!==detail) other.open=false});
   }));
-
-  const processItems=$$('.processSteps article');
-  if(processItems.length&&'IntersectionObserver' in window){
-    const processObserver=new IntersectionObserver(entries=>{
-      const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
-      if(visible) processItems.forEach(item=>item.classList.toggle('active',item===visible.target));
-    },{rootMargin:'-30% 0px -45%',threshold:[0,.25,.5,.75]});
-    processItems.forEach(item=>processObserver.observe(item));
-  }
 
   const form=$('#form');
   const success=$('.success');

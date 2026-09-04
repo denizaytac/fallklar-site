@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#061f25">
 <meta name="description" content="Fallklar ist die KI-Telefonassistenz für unbeantwortete Anrufe: Sie klärt Anliegen, erfasst Angaben und informiert Ihr Team nur, wenn es nötig ist.">
-<title>Fallklar — KI-Telefonassistenz für unbeantwortete Anrufe</title>
+<title>Fallklar — Wichtige Anrufe. Klar übergeben.</title>
 <link rel="icon" href="data:,">
 <link rel="preload" href="assets/fallklar-night-phone.webp" as="image" type="image/webp">
 <link rel="stylesheet" href="styles-base.css">
@@ -16,184 +16,191 @@
 <body>
 <a class="skip" href="#main">Zum Inhalt springen</a>
 <div class="progress" aria-hidden="true"><i></i></div>
+
 <header class="header" data-header>
   <div class="shell head">
-    <a class="brand" href="#top" aria-label="Fallklar Startseite">fallklar</a>
-    <button class="menu" type="button" aria-expanded="false" aria-controls="nav"><span class="sr">Navigation öffnen</span><i></i><i></i></button>
-    <nav class="nav" id="nav" aria-label="Hauptnavigation"><a href="#einsatz">Einsatzzeiten</a><a href="#ablauf">Anruf-Ablauf</a><a href="#pilot">Pilot</a></nav>
+    <a class="brand" href="#top" aria-label="Fallklar Startseite">fallklar<span>.</span></a>
+    <nav class="nav" id="nav" aria-label="Hauptnavigation">
+      <a href="#ablauf">Anruf-Ablauf</a>
+      <a href="#wirkung">Wirkung</a>
+      <a href="#pilot">Pilot</a>
+    </nav>
     <a class="headerCta" href="#anfrage">Pilot anfragen <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4"/></svg></a>
+    <button class="menu" type="button" aria-expanded="false" aria-controls="nav"><span class="sr">Navigation öffnen</span><i></i><i></i></button>
   </div>
 </header>
 
 <main id="main">
-<section class="hero" id="top">
-  <div class="shell heroGrid">
-    <div class="heroCopy">
-      <h1>Wenn niemand rangeht, nimmt Fallklar ab.</h1>
-      <p class="heroLead">Fallklar ist die KI-Telefonassistenz für Zeiten, in denen Ihr Team nicht erreichbar ist oder nicht gestört werden soll. <strong>Sie führt das Gespräch, fragt die nötigen Angaben ab und informiert Ihr Team nur, wenn etwas nicht warten kann.</strong></p>
-      <div class="heroActions">
-        <a class="btn primary" href="#anfrage">Pilot anfragen <span class="btnIcon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4"/></svg></span></a>
-        <a class="inlineLink" href="#ablauf">So läuft ein Anruf <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v12M6 11l4 4 4-4"/></svg></a>
+  <section class="hero" id="top">
+    <img class="heroMedia" src="assets/fallklar-night-phone.webp" alt="Wandtelefon in einer nächtlichen Industrieanlage" width="1122" height="1402" fetchpriority="high" decoding="async">
+    <div class="heroShade" aria-hidden="true"></div>
+    <div class="shell heroInner">
+      <div class="heroCopy">
+        <p class="eyebrow">KI-Telefonassistenz · wenn Ihr Team nicht abnimmt</p>
+        <h1><span>Wenn niemand</span><span>rangeht, nimmt</span><span>Fallklar ab.</span></h1>
+        <p class="heroLead">Fallklar führt das Gespräch, erfasst die nötigen Angaben und informiert Ihr Team <strong>nur, wenn etwas nicht warten kann.</strong></p>
+        <div class="heroActions">
+          <a class="btn primary" href="#anfrage">Pilot anfragen <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4"/></svg></a>
+          <a class="textLink" href="#ablauf">Einen Anruf verfolgen <span>↓</span></a>
+        </div>
       </div>
     </div>
-
-    <figure class="heroArtifact">
-      <img src="assets/fallklar-night-phone.webp" alt="Wandtelefon in einer nächtlichen Industrieanlage" width="1122" height="1402" fetchpriority="high" decoding="async">
-      <figcaption><span>Außerhalb der Bürozeiten</span><b>Servicebetrieb / 22:47</b></figcaption>
-      <div class="heroCall" aria-label="Beispiel für einen dringenden Anruf">
-        <span><small>Zeit</small><b>22:47</b></span>
-        <span><small>Priorität</small><b class="orange">dringend</b></span>
-        <strong>„Kühlung ausgefallen.“</strong>
-        <span><small>Status</small><b>Bereitschaft informiert</b></span>
+    <div class="heroStatusWrap">
+      <div class="shell heroStatus" aria-label="Beispiel für eine vollständige Anrufübergabe">
+        <div class="live"><i></i><span>LIVE-BEISPIEL</span><b>22:47:03</b></div>
+        <div><small>Eingang</small><strong>Kühlung ausgefallen</strong></div>
+        <div><small>Entscheidung</small><strong>Bereitschaft informieren</strong></div>
+        <div><small>Übergabe</small><strong>22:49:05 · vollständig</strong></div>
       </div>
-    </figure>
-  </div>
-  <div class="shell heroValue">
-    <div><span>01</span><p>Wichtige Anrufe werden auch ohne freie Person angenommen.</p></div>
-    <div><span>02</span><p>Nur klar definierte Dringlichkeiten werden sofort weitergegeben.</p></div>
-    <div><span>03</span><p>Ihr Team erhält Anlass, Kontakt und alle nötigen Angaben.</p></div>
-  </div>
-</section>
-
-<section class="section activation" id="einsatz">
-  <div class="shell">
-    <div class="sectionHead">
-      <div class="sectionTitle"><span class="sectionLabel">Einsatzzeiten</span><h2>Sie bestimmen, wann Fallklar ans Telefon geht.</h2></div>
-      <p>Per Zeitfenster, Rufumleitung oder Überlauf übernimmt Fallklar nur die Anrufe, die Sie festlegen. Ihre bestehende Nummer und Telefonie bleiben erhalten.</p>
     </div>
-    <div class="activationRail">
-      <article><span>ZEITFENSTER / 01</span><h3>Nach Feierabend</h3><p>Fallklar nimmt Anrufe entgegen und klärt, ob nach Ihren Regeln noch heute jemand informiert werden muss. Alles andere wird für den nächsten Arbeitstag übergeben.</p><b>Erreichbar, ohne die Nacht zu besetzen.</b></article>
-      <article><span>BEREITSCHAFT / 02</span><h3>Während der Bereitschaft</h3><p>Die diensthabende Person wird nur bei Fällen informiert, die Ihre Dringlichkeitsregeln erfüllen – und erhält direkt den nötigen Kontext.</p><b>Weniger Unterbrechungen. Bessere Übergaben.</b></article>
-      <article><span>ÜBERLAUF / 03</span><h3>Wenn niemand abnimmt</h3><p>Nach einer festgelegten Klingeldauer übernimmt Fallklar – etwa wenn alle unterwegs, im Termin oder im Einsatz sind.</p><b>Statt Mailbox: ein Vorgang mit allen nötigen Angaben.</b></article>
-    </div>
-    <div class="configLine"><span>Für Ihren Startfall festgelegt</span><div><b>Rufnummer</b><i>→</i><b>Übernahmezeitpunkt</b><i>→</i><b>Pflichtfragen</b><i>→</i><b>Dringlichkeitsregeln</b></div></div>
-  </div>
-</section>
+  </section>
 
-<section class="section process" id="ablauf">
-  <div class="shell">
-    <div class="experienceHead">
-      <div><span>Anruf-Ablauf</span><h2>Fallklar klärt den Anruf, bevor Ihr Team übernehmen muss.</h2></div>
+  <section class="premise">
+    <div class="shell premiseGrid">
+      <p class="sectionTag">Worum es geht</p>
+      <h2>Nicht mehr Anrufe.<br>Sondern klare Fälle.</h2>
+      <div class="premiseCopy">
+        <p>Wenn niemand abnimmt, übernimmt Fallklar genau die Situation, die Sie vorher festlegen: nach Feierabend, während der Bereitschaft oder nach einer bestimmten Klingeldauer.</p>
+        <div class="triggers" aria-label="Mögliche Einsatzzeiten"><span>Feierabend</span><span>Bereitschaft</span><span>Überlauf</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="incident" id="ablauf">
+    <div class="shell">
+      <div class="incidentHead">
+        <p class="sectionTag">Ein Anruf, Schritt für Schritt</p>
+        <h2>Von „Hallo?“ bis zur klaren Übergabe in <span data-case-total>02:02</span>.</h2>
+        <div class="caseTabs" role="tablist" aria-label="Beispielanrufe">
+          <button class="caseTab active" type="button" role="tab" aria-selected="true" data-case="urgent"><b>22:47</b><span>Störung</span></button>
+          <button class="caseTab" type="button" role="tab" aria-selected="false" data-case="wait"><b>18:12</b><span>Termin</span></button>
+        </div>
+      </div>
+
+      <div class="incidentBoard">
+        <article class="caseFile">
+          <div class="caseTop"><span data-case-type>Technischer Bereitschaftsdienst</span><b data-case-status>SOFORT</b></div>
+          <time data-case-time>22:47:03</time>
+          <blockquote data-case-quote>„Die Kühlung ist ausgefallen. Der Betrieb startet um sechs.“</blockquote>
+          <p>Originalanliegen, von Fallklar im Gespräch geklärt.</p>
+        </article>
+
+        <ol class="trace">
+          <li>
+            <div class="traceTime"><b>+00:00</b><span>Annehmen</span></div>
+            <div class="traceBody"><h3>Der Anruf wird zum Vorgang.</h3><p>Fallklar meldet sich im Namen Ihres Unternehmens und erklärt transparent, dass eine KI-Assistenz das Anliegen aufnimmt.</p></div>
+          </li>
+          <li>
+            <div class="traceTime"><b>+00:31</b><span>Klären</span></div>
+            <div class="traceBody"><h3>Vier Angaben, die Ihr Team braucht.</h3><dl data-case-fields><div><dt>Standort</dt><dd>Werk 2</dd></div><div><dt>Rückruf</dt><dd>vorhanden</dd></div><div><dt>Anlage</dt><dd>Kühlung</dd></div><div><dt>Auswirkung</dt><dd>Produktionsstart gefährdet</dd></div></dl></div>
+          </li>
+          <li>
+            <div class="traceTime"><b>+01:23</b><span>Prüfen</span></div>
+            <div class="traceBody"><h3>Ihre Regel entscheidet über das Timing.</h3><p class="ruleText"><span>Vereinbarte Regel</span><strong data-case-rule>Kritische Anlage + Ausfall vor Betriebsstart</strong></p></div>
+          </li>
+          <li class="handoff">
+            <div class="traceTime"><b data-case-duration>+02:02</b><span>Übergeben</span></div>
+            <div class="traceBody"><span class="decisionLabel">Nächster Schritt</span><h3 data-case-decision>Bereitschaft jetzt informieren.</h3><p data-case-copy>Mit Situation, Rückrufnummer und allen vier Pflichtangaben.</p><div class="handoffStamp"><span>ÜBERGEBEN</span><b data-case-handoff>22:49:05</b></div></div>
+          </li>
+        </ol>
+      </div>
+      <p class="incidentNote">Beispielhafter Ablauf. Fragen, Regeln und Übergabeweg werden für Ihren Einsatz festgelegt.</p>
+    </div>
+  </section>
+
+  <section class="proof" id="wirkung">
+    <div class="shell proofTop">
+      <p class="sectionTag light">Zwei Anrufe am selben Abend</p>
+      <h2>Die Bereitschaft wurde um 22:49 informiert. Nicht um 18:12.</h2>
+      <p class="proofIntro">Fallklar unterscheidet nicht nach Bauchgefühl, sondern nach den Regeln, die Ihr Team vorgibt.</p>
+    </div>
+    <div class="shell ledger" aria-label="Vergleich zweier Beispielanrufe">
+      <article class="ledgerUrgent">
+        <time>22:47</time>
+        <div><span>Technische Störung</span><strong>Wasser tritt weiter aus. Technikraum betroffen.</strong></div>
+        <p><span>Regel erfüllt</span>Aktiver Austritt + kritischer Bereich</p>
+        <b>SOFORT</b>
+      </article>
+      <article>
+        <time>18:12</time>
+        <div><span>Terminänderung</span><strong>Termin morgen verschieben. Rückruf erbeten.</strong></div>
+        <p><span>Kein akuter Handlungsbedarf</span>Vollständig für 08:00 vorgemerkt</p>
+        <b>MORGEN</b>
+      </article>
+    </div>
+    <div class="shell proofMeasure">
+      <p>Im gezeigten Störungsfall</p>
+      <div><strong>02:02</strong><span>bis zur Übergabe</span></div>
+      <div><strong>4 / 4</strong><span>Pflichtangaben vorhanden</span></div>
+      <div><strong>1</strong><span>gezielte Unterbrechung</span></div>
+    </div>
+  </section>
+
+  <section class="criteria">
+    <div class="shell criteriaGrid">
       <div>
-        <p>Jeder Anruf folgt einem Gesprächsleitfaden, den wir mit Ihnen festlegen. So erhält Ihr Team genau die Angaben, die es für den nächsten Schritt braucht.</p>
-        <div class="callTabs" role="tablist" aria-label="Beispielanrufe">
-          <button class="callTab active" type="button" role="tab" aria-selected="true" data-call="urgent"><b>22:47</b><span>dringend</span></button>
-          <button class="callTab" type="button" role="tab" aria-selected="false" data-call="wait"><b>18:12</b><span>kann warten</span></button>
-        </div>
+        <p class="sectionTag">Die entscheidende Frage</p>
+        <h2>Lässt sich klar sagen, was sofort passieren muss?</h2>
+      </div>
+      <div class="criteriaBody">
+        <p class="fitYes"><span>Dann passt Fallklar</span>Wichtige Anrufe kommen außerhalb sicher besetzter Zeiten. Die gleichen Kernfragen kehren wieder. Dringlichkeit lässt sich an klaren Merkmalen erkennen.</p>
+        <p><span>Eher nicht</span>Jeder Anruf braucht unmittelbar fachliche Diagnose, Beratung oder eine verbindliche Einsatzentscheidung.</p>
+        <small>Typische Einsatzfelder: technischer Service, Schaden- und Bereitschaftsdienste, Immobilien, Facility und Handwerk.</small>
       </div>
     </div>
-    <div class="experienceGrid" aria-label="Drei Schritte eines geklärten Anrufs">
-      <article class="stageIncoming">
-        <span class="stageNo">01 / EINGANG</span>
-        <div class="stageTime" data-call-time>22:47</div>
-        <small data-call-meta>Technischer Bereitschaftsdienst</small>
-        <h3 data-call-title>„Unsere Kühlung ist ausgefallen. Der Betrieb startet um sechs.“</h3>
-      </article>
-      <article class="stageClarify">
-        <span class="stageNo">02 / KLÄRUNG</span>
-        <h3>Im Gespräch erfasst</h3>
-        <ul data-capture><li>Standort</li><li>Rückrufnummer</li><li>betroffene Anlage</li><li>Auswirkung &amp; Zugang</li></ul>
-        <p>Fallklar fragt nur nach den Angaben, die Ihr Team für den nächsten Schritt braucht.</p>
-      </article>
-      <article class="stageDecision">
-        <span class="stageNo">03 / ÜBERGABE</span>
-        <div class="urgency" data-urgency>dringend</div>
-        <div class="decision urgent" data-decision>
-          <span>Nächster Schritt</span>
-          <strong data-decision-title>Bereitschaft jetzt informieren</strong>
-          <p data-decision-copy>Mit Situation, Rückrufnummer und allen erfassten Angaben.</p>
-          <em data-decision-tag>sofort</em>
-        </div>
-        <b>Fallklar ordnet ein.<br>Ihr Team entscheidet.</b>
-      </article>
-    </div>
-    <div class="callPath"><span><b>22:47</b>Anruf übernommen</span><i>→</i><span><b>22:48</b>Anliegen geklärt</span><i>→</i><span><b>22:49</b>Dringlichkeit geprüft</span><i>→</i><span><b>22:49</b>vollständig übergeben</span></div>
-  </div>
-</section>
+  </section>
 
-<section class="outcomes" id="beispiele">
-  <div class="shell outcomesHead"><span class="sectionLabel light">Zwei mögliche Ausgänge</span><h2>Dringendes wird sofort gemeldet. Alles andere liegt vollständig für später vor.</h2></div>
-  <div class="outcomeSplit">
-    <article class="outcomeUrgent"><div class="outcomeMeta"><span>22:47 / Technische Störung</span><b>DRINGEND</b></div><blockquote>„Wasser tritt weiter aus. Der Technikraum könnte betroffen sein.“</blockquote><dl><div><dt>Beispielregel</dt><dd>Aktiver Wasseraustritt + kritischer Bereich</dd></div><div><dt>Übergabe</dt><dd>Die Bereitschaft erhält den Fall sofort – mit allen erfassten Angaben.</dd></div></dl></article>
-    <article class="outcomeLater"><div class="outcomeMeta"><span>18:12 / Terminänderung</span><b>KANN WARTEN</b></div><blockquote>„Ich möchte den Termin morgen verschieben und brauche einen Rückruf.“</blockquote><dl><div><dt>Beispielregel</dt><dd>Kein akuter Handlungsbedarf</dd></div><div><dt>Übergabe</dt><dd>Für morgen vorgemerkt. Die Bereitschaft bleibt ungestört.</dd></div></dl></article>
-  </div>
-</section>
+  <section class="pilot" id="pilot">
+    <div class="shell pilotMast">
+      <div class="pilotNumber"><strong>06</strong><span>Wochen</span></div>
+      <div class="pilotPitch"><p class="sectionTag light">Founding Pilot</p><h2>Eine Situation testen. Danach wissen, ob es trägt.</h2></div>
+      <div class="pilotPrice"><span>einmalig / netto</span><strong>750 €</strong><small>keine automatische Verlängerung</small></div>
+    </div>
+    <div class="shell pilotSteps">
+      <article><span>Woche 1</span><h3>Festlegen</h3><p>Übernahmezeitpunkt, Pflichtfragen, Zuständigkeiten und Dringlichkeitsregeln.</p></article>
+      <article><span>Woche 2–5</span><h3>Echt testen</h3><p>Ausgewählte Anrufe übernehmen, Übergaben prüfen und Regeln gezielt nachschärfen.</p></article>
+      <article><span>Woche 6</span><h3>Entscheiden</h3><p>Vollständigkeit, Weitergaben und operative Entlastung gemeinsam auswerten.</p></article>
+    </div>
+    <div class="shell boundary"><span>Klare Grenze</span><p>Fallklar nimmt auf und ordnet nach Ihren Regeln ein. Diagnose, verbindliche Zusagen und finale Einsatzentscheidungen bleiben bei Ihrem Team.</p></div>
+  </section>
 
-<section class="section value" id="wert">
-  <div class="shell">
-    <div class="sectionHead"><div class="sectionTitle"><span class="sectionLabel">Wirkung im Alltag</span><h2>Erreichbar bleiben, ohne ständig erreichbar sein zu müssen.</h2></div><p>Fallklar lohnt sich, wenn ein verpasster Anruf einen Auftrag oder eine rechtzeitige Reaktion kosten kann, eine durchgehend besetzte Telefonzentrale aber nicht wirtschaftlich ist.</p></div>
-    <div class="valueCompare">
-      <div class="compareRow"><div class="compareLabel"><span>OHNE FALLKLAR</span><strong>später zurückrufen</strong></div><div class="compareFlow"><span>Anruf</span><i>→</i><span>niemand nimmt ab</span><i>→</i><span>Rückruf ohne Kontext</span><i>→</i><span>alles erneut klären</span></div></div>
-      <div class="compareRow positive"><div class="compareLabel"><span>MIT FALLKLAR</span><strong>gezielt übernehmen</strong></div><div class="compareFlow"><span>Anruf</span><i>→</i><span>Anliegen geklärt</span><i>→</i><span>Angaben vollständig</span><i>→</i><span>sofort oder später übergeben</span></div></div>
+  <section class="request" id="anfrage">
+    <div class="shell requestGrid">
+      <div class="requestCopy">
+        <p class="sectionTag">Pilot anfragen</p>
+        <h2>Wo geht heute ein wichtiger Anruf ins Leere?</h2>
+        <p>Im ersten Gespräch klären wir genau einen Startfall. Danach ist klar, ob der sechswöchige Pilot für Sie sinnvoll ist.</p>
+        <div class="requestTerms"><span>01 · eine Situation</span><span>02 · Ihre Regeln</span><span>03 · gemeinsame Auswertung</span></div>
+      </div>
+      <div class="formBox">
+        <form id="form" novalidate>
+          <div class="fields"><label><span>Unternehmen</span><input name="company" autocomplete="organization" required></label><label><span>Ansprechpartner</span><input name="name" autocomplete="name" required></label></div>
+          <div class="fields"><label><span>E-Mail</span><input type="email" name="email" autocomplete="email" required></label><label><span>Telefon</span><input type="tel" name="phone" autocomplete="tel" required></label></div>
+          <label><span>Wann soll Fallklar übernehmen?</span><select name="trigger" required><option value="">Bitte auswählen</option><option>Nach Feierabend</option><option>Während der Bereitschaft</option><option>Wenn niemand abnimmt / Überlauf</option><option>Noch unklar</option></select></label>
+          <label><span>Welche Anrufe soll Fallklar aufnehmen?</span><textarea name="situation" placeholder="Zum Beispiel: Störungsmeldungen, neue Aufträge oder Notdienstanrufe." required></textarea></label>
+          <button class="btn primary" type="submit">Pilotgespräch anfragen <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4"/></svg></button>
+          <p class="formNote">Demoformular: Ihre Angaben bleiben in diesem Browser und werden nicht versendet.</p>
+          <div class="error" role="alert" aria-live="polite"></div>
+        </form>
+        <div class="success" hidden aria-live="polite"><span>✓</span><h3>Angaben vollständig.</h3><p>Die Angaben wurden nur in diesem Browser geprüft und nicht versendet.</p><button class="reset" type="button">Noch einmal ausfüllen</button></div>
+      </div>
     </div>
-    <div class="valuePoints">
-      <article><span>01</span><h3>Weniger verlorene Anfragen</h3><p>Wichtige Anfragen bleiben bearbeitbar, auch wenn gerade niemand frei ist.</p></article>
-      <article><span>02</span><h3>Weniger unnötige Unterbrechungen</h3><p>Nur definierte Dringlichkeiten erreichen die diensthabende Person sofort.</p></article>
-      <article><span>03</span><h3>Weniger Rückfragen</h3><p>Wer übernimmt, kennt bereits Anlass, Kontaktdaten und die Antworten auf Ihre Pflichtfragen.</p></article>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="section fit" id="passung">
-  <div class="shell fitGrid">
-    <div class="fitIntro"><span class="sectionLabel">Passung</span><h2>Ob Fallklar passt, entscheidet Ihr Anrufmuster – nicht Ihre Branche.</h2><p>Eine gute Passung besteht, wenn wichtige Anrufe zu Zeiten kommen, in denen niemand zuverlässig abnimmt, und sich klar festlegen lässt, was sofort passieren muss und was warten kann.</p><p class="industryLine"><strong>Typische Einsatzfelder:</strong> technischer Service, Schaden- und Bereitschaftsdienste, Immobilien und Facility, Handwerk.</p></div>
-    <div class="fitMatrix">
-      <div><h3>Gute Passung</h3><ul><li>Ein verpasster Anruf kann einen Auftrag oder eine rechtzeitige Reaktion kosten.</li><li>Die gleichen Kernfragen kehren in vielen Gesprächen wieder.</li><li>Dringende Fälle lassen sich anhand klarer Merkmale erkennen.</li><li>Es gibt keine dauerhaft besetzte 24/7-Leitstelle.</li></ul></div>
-      <div class="not"><h3>Eher nicht</h3><ul><li>Jeder Anruf braucht sofort fachliche Diagnose oder Beratung.</li><li>Eine Leitstelle qualifiziert bereits alle Fälle zuverlässig.</li><li>Anliegen und Abläufe unterscheiden sich jedes Mal grundlegend.</li><li>Die KI soll verbindliche Zusagen oder Einsatzentscheidungen treffen.</li></ul></div>
+  <section class="faq" id="faq">
+    <div class="shell faqGrid">
+      <div class="faqTitle"><p class="sectionTag">Vor dem Start</p><h2>Vier klare Antworten.</h2></div>
+      <div class="faqs">
+        <details><summary>Bleibt unsere Telefonnummer?<i></i></summary><div><p>Ja. Fallklar wird per Rufumleitung, Zeitsteuerung oder Weiterleitung bei Nichtannahme zugeschaltet. Ihre bestehende Telefonie bleibt erhalten.</p></div></details>
+        <details><summary>Wie erkennt Fallklar Dringlichkeit?<i></i></summary><div><p>Anhand der Fragen und Merkmale, die wir mit Ihnen festlegen – zum Beispiel Fallart, Ort, Auswirkung oder bestimmte Antworten.</p></div></details>
+        <details><summary>Was passiert bei einem unklaren Fall?<i></i></summary><div><p>Dafür legen wir vorher einen Weg fest: Eine Person wird einbezogen oder der Vorgang ausdrücklich als unklar übergeben.</p></div></details>
+        <details><summary>Trifft Fallklar fachliche Entscheidungen?<i></i></summary><div><p>Nein. Fallklar erfasst, ordnet nach Ihren Regeln ein und übergibt. Diagnose, Zusagen und finale Entscheidungen bleiben bei Ihrem Team.</p></div></details>
+      </div>
     </div>
-  </div>
-</section>
-
-<section class="section pilot" id="pilot">
-  <div class="shell">
-    <div class="pilotGrid">
-      <div class="pilotCopy"><span class="sectionLabel light">Founding Pilot</span><h2>Sechs Wochen, um den Nutzen im echten Betrieb zu prüfen.</h2><p>Wir starten mit genau einer Situation – etwa nach Feierabend, während der Bereitschaft oder als Überlauf. Ihre übrige Telefonie bleibt unangetastet; der Pilot verlängert sich nicht automatisch.</p></div>
-      <aside class="pilotOffer"><span>FOUNDING PILOT</span><strong>750 €</strong><small>netto / einmalig</small><p>Sechs Wochen, eine klar begrenzte Situation, keine automatische Verlängerung.</p></aside>
-    </div>
-    <div class="timeline">
-      <article><span>WOCHE 1</span><h3>Einsatz einrichten</h3><p>Wir legen Übernahmezeitpunkt, Gesprächsfragen, Zuständigkeiten und Dringlichkeitsregeln fest.</p></article>
-      <article><span>WOCHE 2—5</span><h3>Mit echten Anrufen testen</h3><p>Fallklar übernimmt ausgewählte Anrufe. Übergaben und Regeln werden anhand der Gespräche verbessert.</p></article>
-      <article><span>WOCHE 6</span><h3>Gemeinsam auswerten</h3><p>Wir prüfen Vollständigkeit, Rückfragen, Weitergaben und operative Entlastung – und entscheiden dann.</p></article>
-    </div>
-    <div class="pilotBottom"><p><span>KLARE GRENZE</span> Fallklar nimmt auf und ordnet ein. Diagnose, verbindliche Zusagen und finale Einsatzentscheidungen bleiben bei Ihrem Team.</p><a class="btn primary" href="#anfrage">Pilot anfragen <span class="btnIcon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4"/></svg></span></a></div>
-  </div>
-</section>
-
-<section class="section faq" id="faq">
-  <div class="shell faqGrid">
-    <div class="faqIntro"><span class="sectionLabel light">Fragen und Antworten</span><h2>Die wichtigsten Fragen, bevor Fallklar ans Telefon geht.</h2><p>Zu Schaltung, Verantwortung und Ablauf des Piloten.</p></div>
-    <div class="faqs">
-      <details><summary><span>01</span>Bleibt unsere bestehende Telefonnummer?</summary><div><p>Ja. Fallklar wird typischerweise per Rufumleitung, Zeitsteuerung oder Weiterleitung bei Nichtannahme zugeschaltet. Im Pilot starten wir mit einer klar begrenzten Schaltung.</p></div></details>
-      <details><summary><span>02</span>Welche Anrufe übernimmt Fallklar?</summary><div><p>Nur in der vereinbarten Situation. Sie bestimmen Rufnummer, Zeitfenster und wann die Weiterleitung greift.</p></div></details>
-      <details><summary><span>03</span>Wie erkennt Fallklar, was dringend ist?</summary><div><p>Anhand der Fragen und Merkmale, die wir mit Ihnen festlegen. Je nach Einsatz können zum Beispiel Uhrzeit, Fallart, Ort, Auswirkung oder bestimmte Antworten eine Rolle spielen.</p></div></details>
-      <details><summary><span>04</span>Was passiert, wenn eine Situation unklar bleibt?</summary><div><p>Für solche Fälle legen wir vorher fest, was passiert. Je nach Einsatz wird eine Person einbezogen oder der Vorgang ausdrücklich als unklar übergeben.</p></div></details>
-      <details><summary><span>05</span>Trifft Fallklar fachliche Entscheidungen?</summary><div><p>Nein. Fallklar erfasst, ordnet nach Ihren Regeln ein und übergibt. Diagnose, verbindliche Zusagen und finale Einsatzentscheidungen bleiben bei Ihrem Team.</p></div></details>
-      <details><summary><span>06</span>Warum kostet der Pilot 750 €?</summary><div><p>Weil wir Ihre konkrete Situation individuell einrichten, mit ausgewählten Anrufen testen, die Qualität prüfen und die Pilotfälle gemeinsam auswerten.</p></div></details>
-    </div>
-  </div>
-</section>
-
-<section class="final" id="anfrage">
-  <div class="shell finalGrid">
-    <div class="finalCopy"><span class="finalMeta">6-WOCHEN-PILOT / 750 € NETTO / KEINE AUTOMATISCHE VERLÄNGERUNG</span><h2>Testen Sie Fallklar dort, wo heute Anrufe verloren gehen oder Ihr Team unnötig stören.</h2><p>Im ersten Gespräch klären wir, wann Fallklar übernehmen soll, welche Angaben Ihr Team braucht und welche Situationen sofort weitergegeben werden müssen. Danach ist klar, ob der Pilot sinnvoll ist.</p><div class="finalProof"><span><i></i>Ein klar begrenzter Startfall</span><span><i></i>Ihre Fragen und Regeln</span><span><i></i>Gemeinsame Auswertung nach sechs Wochen</span></div></div>
-    <div class="formBox">
-      <form id="form" novalidate>
-        <div class="formHead"><span>PILOT ANFRAGEN</span><h3>Beschreiben Sie kurz, wann Fallklar bei Ihnen übernehmen soll.</h3></div>
-        <div class="fields"><label><span>Unternehmen</span><input name="company" autocomplete="organization" required></label><label><span>Ansprechpartner</span><input name="name" autocomplete="name" required></label></div>
-        <div class="fields"><label><span>E-Mail</span><input type="email" name="email" autocomplete="email" required></label><label><span>Telefon</span><input type="tel" name="phone" autocomplete="tel" required></label></div>
-        <label><span>Wann soll Fallklar typischerweise übernehmen?</span><select name="trigger" required><option value="">Bitte auswählen</option><option>Nach Feierabend</option><option>Während der Bereitschaft</option><option>Wenn niemand abnimmt / Überlauf</option><option>Mehrere dieser Situationen</option><option>Noch unklar</option></select></label>
-        <label><span>Welche Anrufe soll Fallklar aufnehmen oder filtern?</span><textarea name="situation" placeholder="Zum Beispiel: Störungsmeldungen, neue Aufträge, Terminfragen oder Notdienstanrufe." required></textarea></label>
-        <button class="btn primary" type="submit">Pilotgespräch anfragen <span class="btnIcon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4"/></svg></span></button>
-        <p class="formNote">Demoformular: Ihre Angaben bleiben in diesem Browser und werden nicht versendet.</p>
-        <div class="error" role="alert" aria-live="polite"></div>
-      </form>
-      <div class="success" hidden aria-live="polite"><span class="successIcon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 17l6 6L26 9"/></svg></span><h3>Angaben vollständig.</h3><p>Die Angaben wurden nur in diesem Browser geprüft und nicht versendet.</p><button class="reset" type="button">Noch einmal ausfüllen</button></div>
-    </div>
-  </div>
-</section>
+  </section>
 </main>
 
-<footer class="footer"><div class="shell foot"><a class="brand dark" href="#top">fallklar</a><p>Wichtige Anrufe annehmen. Nur Dringendes sofort weitergeben.</p><div><a href="#faq">FAQ</a><a href="#pilot">Pilot</a><span>© <span data-year></span></span></div></div></footer>
+<footer class="footer"><div class="shell foot"><a class="brand footerBrand" href="#top">fallklar<span>.</span></a><p>Wichtige Anrufe annehmen. Nur Dringendes sofort weitergeben.</p><div><a href="#faq">FAQ</a><a href="#pilot">Pilot</a><span>© <span data-year></span></span></div></div></footer>
 <script src="script.js" defer></script>
 </body>
 </html>

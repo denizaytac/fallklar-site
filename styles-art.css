@@ -1,28 +1,8 @@
 ::selection{background:var(--orange);color:#fff}
-.heroCopy{animation:heroIn .72s var(--ease) both}.heroArtifact{animation:heroIn .78s .08s var(--ease) both}.heroValue{animation:heroIn .72s .18s var(--ease) both}
-@keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-
-.heroArtifact>img{transition:transform 1.2s var(--ease)}.heroArtifact:hover>img{transform:scale(1.012)}
-.callTab{transition:background .18s,color .18s}.callTab:hover{background:#fff}
-.decision:after{content:"";position:absolute;left:0;top:0;width:3px;height:0;background:var(--orange);animation:decisionLine 3.6s 1s var(--ease) infinite}.decision.wait:after{background:#3c8da0}
-@keyframes decisionLine{0%,70%{height:0}88%,100%{height:100%}}
-
-.activationRail article{position:relative;transition:background .22s,padding .22s var(--ease)}.activationRail article:after{content:"";position:absolute;left:0;right:100%;top:-2px;height:2px;background:var(--orange);transition:right .32s var(--ease)}.activationRail article:hover{background:#f6f7f5}.activationRail article:hover:after{right:0}
-.configLine i{animation:signalArrow 2.4s var(--ease) infinite}@keyframes signalArrow{0%,100%{opacity:.4;transform:translateX(0)}45%{opacity:1;transform:translateX(4px)}}
-.ruleRows>div{transition:background .18s}.ruleRows>div:hover{background:rgba(255,255,255,.035)}
-.outcomeSplit>article{position:relative;overflow:hidden}.outcomeSplit>article:after{content:"";position:absolute;right:0;bottom:0;width:92px;height:4px;background:var(--orange)}.outcomeLater:after{background:#416c84}
-.compareRow{transition:padding .22s var(--ease)}.compareRow:hover{padding-inline:10px}
-.fitMatrix li{transition:padding .2s var(--ease)}.fitMatrix li:hover{padding-left:30px}
-.timeline article{position:relative}.timeline article:before{content:"";position:absolute;left:-5px;top:-5px;width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 5px var(--deep)}
-details[open] summary{color:var(--orange-dark)}
-input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus{-webkit-text-fill-color:#fff;box-shadow:0 0 0 1000px var(--deep-2) inset!important}
-
-@media(max-width:700px){
-  .heroCopy,.heroArtifact,.heroValue{animation-duration:.5s}
-  .timeline article:before{left:0;top:-5px}
-  .compareRow:hover{padding-inline:0}
-}
-@media(prefers-reduced-motion:reduce){
-  .heroCopy,.heroArtifact,.heroValue,.decision:after,.configLine i{animation:none!important}
-  .heroArtifact>img{transition:none}
-}
+.heroCopy{animation:rise .72s var(--ease) both}.heroStatus{animation:rise .72s .14s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.heroMedia{transition:transform 1.4s var(--ease)}.hero:hover .heroMedia{transform:scale(1.012)}
+.caseTab{transition:color .18s,background .18s}.caseTab:hover{background:#edf0ed;color:var(--ink)}
+.incidentBoard.wait .trace li:before,.incidentBoard.wait .traceTime:after{background:#78949b}.incidentBoard.wait .traceTime:after{box-shadow:0 0 0 1px #78949b}.incidentBoard.wait .handoffStamp{border-color:#78949b}
+details[open] summary{color:var(--ink-2)}
+@media(prefers-reduced-motion:reduce){.heroCopy,.heroStatus{animation:none}.heroMedia{transition:none}}
