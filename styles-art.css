@@ -226,9 +226,9 @@
 .formBox{box-shadow:18px 20px 0 rgba(8,47,53,.12),0 30px 60px rgba(8,47,53,.08)}
 
 @media(max-width:1120px){
-  .heroGrid{gap:74px;grid-template-columns:minmax(0,1fr) minmax(465px,1fr)}
+  .heroGrid{gap:clamp(30px,4vw,44px);grid-template-columns:minmax(0,1fr) minmax(465px,1fr)}
   .heroSculpture{left:50.5%;width:310px;opacity:.9}
-  .hero h1{font-size:clamp(54px,5.8vw,68px)}
+  .hero h1{font-size:clamp(50px,5.2vw,60px)}
 }
 
 @media(max-width:900px){
