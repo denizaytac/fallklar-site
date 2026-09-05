@@ -29,7 +29,7 @@
 .heroGrid{
   z-index:2;
   grid-template-columns:minmax(0,1fr) minmax(500px,.82fr);
-  gap:clamp(105px,9vw,142px);
+  gap:clamp(140px,12vw,180px);
   padding-bottom:62px;
 }
 .heroCopy{position:relative;z-index:4;max-width:610px}
@@ -225,9 +225,11 @@
 .pilotCard{box-shadow:18px 20px 0 var(--deep-2),0 25px 70px rgba(0,0,0,.2)}
 .formBox{box-shadow:18px 20px 0 rgba(8,47,53,.12),0 30px 60px rgba(8,47,53,.08)}
 
-@media(max-width:1120px){
-  .heroGrid{gap:clamp(30px,4vw,44px);grid-template-columns:minmax(0,1fr) minmax(465px,1fr)}
-  .heroSculpture{left:50.5%;width:310px;opacity:.9}
+@media(max-width:1200px){
+  .heroGrid{grid-template-columns:1fr;gap:34px}
+  .heroSculpture{position:relative;top:auto;left:auto;width:min(64vw,410px);transform:none;margin:-20px auto -128px;opacity:.9}
+  .heroCopy{max-width:720px}
+  .callBoard{width:min(100%,680px);justify-self:center;transform:none}
   .hero h1{font-size:clamp(50px,5.2vw,60px)}
 }
 
